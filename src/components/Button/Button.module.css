@@ -1,0 +1,19 @@
+.button {
+  width: 320px;
+  height: 50px;
+  background: linear-gradient(90deg, var(--main-accent) 2.61%, #039f67 112.6%);
+  font-style: normal;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 21px;
+  text-align: center;
+  color: #ffffff;
+  border: none;
+  cursor: pointer;
+}
+
+@media (max-width: 320px) {
+  .button {
+    width: 100%;
+  }
+}
