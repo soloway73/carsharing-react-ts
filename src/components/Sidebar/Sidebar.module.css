@@ -1,0 +1,55 @@
+.burgerButtonWrapper {
+  cursor: pointer;
+  padding: 37px 22px;
+}
+.burgerButton {
+  width: 32px;
+  height: 2px;
+  position: relative;
+  background-color: #ffffff;
+  border-radius: 2px;
+  margin: 0;
+}
+
+.burgerButton::before,
+.burgerButton::after {
+  content: "";
+  position: absolute;
+  width: 32px;
+  height: 2px;
+  background-color: #ffffff;
+  border-radius: 2px;
+  transition: all 0.3s ease 0s;
+}
+
+.burgerButton::before {
+  top: -7px;
+}
+.burgerButton::after {
+  top: 7px;
+}
+
+.sidebar {
+  background-color: #151b1f;
+  width: 86px;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.changeLanguageButton {
+  cursor: pointer;
+  padding: 29px 22px;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 100%;
+  color: var(--main-accent);
+  text-align: center;
+}
+
+@media (max-width: 767px) {
+  .sidebar {
+    display: none;
+  }
+}

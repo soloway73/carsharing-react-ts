@@ -1,3 +1,9 @@
+.mainPage {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  height: 100dvh;
+}
 .main {
   display: flex;
   flex-direction: column;
@@ -44,7 +50,6 @@
   font-weight: 400;
   font-size: 13px;
   line-height: 100%;
-  letter-spacing: 0%;
   color: var(--gray-light);
 }
 
@@ -52,6 +57,7 @@
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
+  width: 100%;
 }
 .header > *:nth-child(2) {
   margin-left: auto;
@@ -110,7 +116,6 @@
   font-weight: 300;
   font-size: 18px;
   line-height: 100%;
-  letter-spacing: 0%;
   color: var(--gray);
 }
 
@@ -121,4 +126,53 @@
 
 .content > *:nth-child(3) {
   margin-bottom: 32px;
+}
+
+@media (min-width: 768px) {
+  .burgerButtonWrapper {
+    display: none;
+  }
+  .footer {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+  .header > *:nth-child(2) {
+    margin: 32px;
+    margin-right: auto;
+  }
+  .footer {
+    background-color: transparent;
+  }
+  .phoneNumber {
+    color: var(--black);
+    align-self: center;
+    margin-right: 32px;
+  }
+  .copyright {
+    color: var(--gray);
+    order: -1;
+  }
+  .content > *:nth-child(1),
+  .content > *:nth-child(2) {
+    font-weight: 700;
+    font-size: 70px;
+    margin-left: 32px;
+  }
+  .content > *:nth-child(3) {
+    font-weight: 300;
+    font-size: 26px;
+    margin-left: 32px;
+  }
+  .content > *:nth-child(4) {
+    margin-left: 32px;
+    width: 250;
+    height: 48;
+    border-radius: 8px;
+    font-family: Roboto;
+    font-weight: 500;
+    font-size: 18px;
+  }
+  .geoTag {
+    margin-right: 32px;
+  }
 }
