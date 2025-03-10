@@ -176,3 +176,17 @@
     margin-right: 32px;
   }
 }
+
+@media (min-width: 1024px) {
+  .main {
+    width: auto;
+    min-width: 549px;
+    flex-grow: 1;
+  }
+  .content {
+    margin-top: 159px;
+  }
+  .content > *:nth-child(1) {
+    margin-top: 0;
+  }
+}

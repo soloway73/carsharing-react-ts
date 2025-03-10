@@ -1,6 +1,7 @@
 import { Button } from "../../Button/Button";
 import { Heading } from "../../Heading/Heading";
 import { Sidebar } from "../../Sidebar/Sidebar";
+import Slider from "../../Slider/Slider";
 import styles from "./MainPage.module.css";
 
 export function MainPage() {
@@ -33,6 +34,7 @@ export function MainPage() {
           <p className={styles.copyright}>© 2016-2019 «Need for drive»</p>
         </footer>
       </div>
+      <Slider />
     </div>
   );
 }
