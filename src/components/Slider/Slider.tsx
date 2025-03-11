@@ -26,7 +26,7 @@ const Slider: React.FC = () => {
   const [sliderState, setSliderState] = useState(1);
 
   const handleSlideButtonRightClick = () => {
-    if (sliderState === 4) {
+    if (sliderState === sliderValues.length) {
       setSliderState(1);
     } else {
       setSliderState(sliderState + 1);
@@ -35,7 +35,7 @@ const Slider: React.FC = () => {
 
   const handleSlideButtonLeftClick = () => {
     if (sliderState === 1) {
-      setSliderState(4);
+      setSliderState(sliderValues.length);
     } else {
       setSliderState(sliderState - 1);
     }
