@@ -143,4 +143,8 @@
   .slideContent {
     padding: 237px 64px;
   }
+  .slideButtonLeft,
+  .slideButtonRight {
+    width: 64px;
+  }
 }
