@@ -27,6 +27,9 @@ body {
 a {
   text-decoration: none;
 }
+a:hover {
+  cursor: url("/pointer.svg"), pointer;
+}
 h1 {
   font-size: 3.2em;
   line-height: 1.1;

@@ -1,0 +1,64 @@
+.menu {
+  position: absolute;
+  height: 100dvh;
+  width: 100dvw;
+  z-index: 4;
+  top: 0;
+  left: -100%;
+  display: flex;
+  flex-direction: row;
+  background-color: #151b1f;
+}
+
+.menuLinks,
+.menuContent {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 15px;
+}
+.menuContent {
+  margin: 28px;
+  margin-top: 80px;
+}
+.menuItem {
+  font-weight: 500;
+  font-size: 32px;
+  line-height: 100%;
+  color: #ffffff;
+}
+
+.menuItem:hover {
+  color: var(--main-accent);
+  cursor: url("/pointer.svg"), pointer;
+}
+
+.socialLinks {
+  display: flex;
+  gap: 24px;
+  margin-top: 38px;
+}
+
+.changeLanguageButton {
+  cursor: url("/pointer.svg"), pointer;
+  padding: 10px;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 100%;
+  color: var(--main-accent);
+  text-align: center;
+  margin: 5px;
+  width: 48px;
+  height: 48px;
+  background: none;
+  border: none;
+
+  margin-bottom: 15px;
+}
+
+.changeLanguageButton:hover {
+  border: 1px solid #eeeeee;
+  border-radius: 50%;
+  color: #eeeeee;
+}

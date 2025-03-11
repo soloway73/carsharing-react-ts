@@ -1,5 +1,6 @@
 import { Button } from "../../Button/Button";
 import { Heading } from "../../Heading/Heading";
+import { Menu } from "../../Menu/Menu";
 import { Sidebar } from "../../Sidebar/Sidebar";
 import Slider from "../../Slider/Slider";
 import styles from "./MainPage.module.css";
@@ -7,6 +8,7 @@ import styles from "./MainPage.module.css";
 export function MainPage() {
   return (
     <div className={styles.mainPage}>
+      <Menu />
       <Sidebar />
       <div className={styles.main}>
         <header className={styles.header}>
