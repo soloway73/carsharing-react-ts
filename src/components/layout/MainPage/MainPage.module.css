@@ -36,6 +36,7 @@
 .geoTag:hover svg path {
   stroke: var(--main-accent);
 }
+
 .geoTag:hover {
   color: var(--main-accent);
 }
@@ -70,6 +71,7 @@
 }
 .burgerButtonWrapper {
   cursor: url("/pointer.svg"), pointer;
+  z-index: 10;
 }
 .burgerButton {
   width: 19px;
@@ -97,7 +99,19 @@
 .burgerButton::after {
   top: 7px;
 }
-
+.burgerButtonActive {
+  background-color: transparent;
+}
+.burgerButtonActive::before {
+  top: 0;
+  transform: rotate(45deg);
+  background-color: var(--gray-light);
+}
+.burgerButtonActive::after {
+  top: 0;
+  transform: rotate(-45deg);
+  background-color: var(--gray-light);
+}
 .content {
   display: flex;
   flex-direction: column;

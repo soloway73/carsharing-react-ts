@@ -1,8 +1,15 @@
+import { ReactSVG } from "react-svg";
 import styles from "./Menu.module.css";
+import { useSelector } from "react-redux";
+import { RootState } from "../../store/store";
+import cn from "classnames";
 
 export function Menu() {
+  const menuState = useSelector((s: RootState) => s.menu.isActive);
+
   return (
-    <div className={styles.menu}>
+    <div className={cn(styles.menu, { [styles.menuActive]: menuState })}>
+      <div className={styles.equalizer}></div>
       <div className={styles.menuContent}>
         <div className={styles.menuLinks}>
           <a href="#" className={styles.menuItem}>
@@ -19,14 +26,14 @@ export function Menu() {
           </a>
         </div>
         <div className={styles.socialLinks}>
-          <a href="#">
-            <img src="/Telegram_white.svg" alt="телеграм" />
+          <a href="#" className={styles.socialLink}>
+            <ReactSVG src="/Telegram_white.svg" />
           </a>
-          <a href="#">
-            <img src="/Facebook_white.svg" alt="вконтакте" />
+          <a href="#" className={styles.socialLink}>
+            <ReactSVG src="/Facebook_white.svg" />
           </a>
-          <a href="#">
-            <img src="/Instagram_white.svg" alt="инстаграм" />
+          <a href="#" className={styles.socialLink}>
+            <ReactSVG src="/Instagram_white.svg" />
           </a>
         </div>
         <div className={styles.changeLanguageButton}>Eng</div>

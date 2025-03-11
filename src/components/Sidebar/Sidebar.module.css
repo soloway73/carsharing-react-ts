@@ -1,6 +1,7 @@
 .burgerButtonWrapper {
   cursor: url("/pointer.svg"), pointer;
   padding: 37px 22px;
+  z-index: 10;
 }
 .burgerButton {
   width: 32px;
@@ -27,6 +28,18 @@
 }
 .burgerButton::after {
   top: 7px;
+}
+
+.burgerButtonActive {
+  background-color: transparent;
+}
+.burgerButtonActive::before {
+  top: 0;
+  transform: rotate(45deg);
+}
+.burgerButtonActive::after {
+  top: 0;
+  transform: rotate(-45deg);
 }
 
 .sidebar {

@@ -1,44 +1,37 @@
+import { ReactSVG } from "react-svg";
 import { Button } from "../../Button/Button";
 import { Heading } from "../../Heading/Heading";
 import { Menu } from "../../Menu/Menu";
 import { Sidebar } from "../../Sidebar/Sidebar";
 import Slider from "../../Slider/Slider";
 import styles from "./MainPage.module.css";
+import GeoTag from "/GeoTag.svg";
+import { menuSlice } from "../../../store/menu.slice";
+import { useDispatch, useSelector } from "react-redux";
+import { AppDispatch, RootState } from "../../../store/store";
+import cn from "classnames";
 
 export function MainPage() {
+  const dispatch = useDispatch<AppDispatch>();
+  const menuState = useSelector((s: RootState) => s.menu.isActive);
+  const toggleMenu = () => dispatch(menuSlice.actions.toggle());
+
   return (
     <div className={styles.mainPage}>
       <Menu />
       <Sidebar />
       <div className={styles.main}>
         <header className={styles.header}>
-          <div className={styles.burgerButtonWrapper}>
-            <div className={styles.burgerButton}></div>
+          <div className={styles.burgerButtonWrapper} onClick={toggleMenu}>
+            <div
+              className={cn(styles.burgerButton, {
+                [styles.burgerButtonActive]: menuState,
+              })}
+            ></div>
           </div>
           <Heading />
           <a href="#" className={styles.geoTag}>
-            <svg
-              width="18"
-              height="20"
-              viewBox="0 0 18 20"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                d="M16.0802 8.36364C16.0802 14.0909 8.54011 19 8.54011 19C8.54011 19 1 14.0909 1 8.36364C1 6.41068 1.7944 4.53771 3.20845 3.15676C4.62249 1.77581 6.54035 1 8.54011 1C10.5399 1 12.4577 1.77581 13.8718 3.15676C15.2858 4.53771 16.0802 6.41068 16.0802 8.36364Z"
-                stroke="#999999"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              />
-              <path
-                d="M8.5401 10.8182C9.9282 10.8182 11.0535 9.71925 11.0535 8.36364C11.0535 7.00803 9.9282 5.90909 8.5401 5.90909C7.15201 5.90909 6.02673 7.00803 6.02673 8.36364C6.02673 9.71925 7.15201 10.8182 8.5401 10.8182Z"
-                stroke="#999999"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              />
-            </svg>
+            <ReactSVG src={GeoTag} />
             Ульяновск
           </a>
         </header>

@@ -10,7 +10,8 @@
     overflow: hidden;
     position: relative;
     max-width: 688px;
-    flex: 1 1 410px;
+    min-width: 410px;
+    flex-grow: 2;
     color: #ffffff;
   }
   .slide {
