@@ -3,25 +3,26 @@ import { Button } from "../Button/Button";
 import styles from "./Slider.module.css";
 import cn from "classnames";
 
+const sliderValues = [
+  {
+    title: "Бесплатная парковка",
+    description: "Бесплатная парковка на территории компании",
+  },
+  {
+    title: "Страховка",
+    description: "Полная страховка страховка автомобиля",
+  },
+  {
+    title: "Бензин",
+    description: "Полный бак на любой заправке города за наш счёт",
+  },
+  {
+    title: "Обслуживание",
+    description: "Автомобиль проходит ежедневное ТО",
+  },
+];
+
 const Slider: React.FC = () => {
-  const sliderValues = [
-    {
-      title: "Бесплатная парковка",
-      description: "Бесплатная парковка на территории компании",
-    },
-    {
-      title: "Страховка",
-      description: "Полная страховка страховка автомобиля",
-    },
-    {
-      title: "Бензин",
-      description: "Полный бак на любой заправке города за наш счёт",
-    },
-    {
-      title: "Обслуживание",
-      description: "Автомобиль проходит ежедневное ТО",
-    },
-  ];
   const [sliderState, setSliderState] = useState(1);
 
   const handleSlideButtonRightClick = () => {
@@ -68,22 +69,15 @@ const Slider: React.FC = () => {
         </div>
       </div>
       <div className={styles.dots}>
-        <div
-          onClick={() => setSliderState(1)}
-          className={cn(styles.dot, { [styles.activeDot]: sliderState === 1 })}
-        ></div>
-        <div
-          onClick={() => setSliderState(2)}
-          className={cn(styles.dot, { [styles.activeDot]: sliderState === 2 })}
-        ></div>
-        <div
-          onClick={() => setSliderState(3)}
-          className={cn(styles.dot, { [styles.activeDot]: sliderState === 3 })}
-        ></div>
-        <div
-          onClick={() => setSliderState(4)}
-          className={cn(styles.dot, { [styles.activeDot]: sliderState === 4 })}
-        ></div>
+        {sliderValues.map((_, index) => (
+          <div
+            key={index}
+            onClick={() => setSliderState(index + 1)}
+            className={cn(styles.dot, {
+              [styles.activeDot]: sliderState === index + 1,
+            })}
+          ></div>
+        ))}
       </div>
     </div>
   );
