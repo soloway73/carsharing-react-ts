@@ -4,6 +4,24 @@ import styles from "./Slider.module.css";
 import cn from "classnames";
 
 const Slider: React.FC = () => {
+  const sliderValues = [
+    {
+      title: "Бесплатная парковка",
+      description: "Бесплатная парковка на территории компании",
+    },
+    {
+      title: "Страховка",
+      description: "Полная страховка страховка автомобиля",
+    },
+    {
+      title: "Бензин",
+      description: "Полный бак на любой заправке города за наш счёт",
+    },
+    {
+      title: "Обслуживание",
+      description: "Автомобиль проходит ежедневное ТО",
+    },
+  ];
   const [sliderState, setSliderState] = useState(1);
 
   const handleSlideButtonRightClick = () => {
@@ -37,56 +55,14 @@ const Slider: React.FC = () => {
         <img src="/vector-right.svg" alt="стрелка вправо" />
       </button>
       <div className={styles.slides}>
-        <div
-          className={cn(styles.slide1, styles.slide, {
-            [styles.active]: sliderState === 1,
-          })}
-        >
+        <div className={cn(styles[`slide${sliderState}`], styles.slide)}>
           <div className={styles.slideContent}>
-            <h2 className={styles.heading}>Бесплатная парковка</h2>
-            <p className={styles.description}>
-              Оставляйте машину на платных городских парковках и разрешенных
-              местах, не нарушая ПДД, а также в аэропортах.
-            </p>
-            <Button>Подробнее</Button>
-          </div>
-        </div>
-        <div
-          className={cn(styles.slide2, styles.slide, {
-            [styles.active]: sliderState === 2,
-          })}
-        >
-          <div className={styles.slideContent}>
-            <h2 className={styles.heading}>Страховка</h2>
-            <p className={styles.description}>
-              Полная страховка страховка автомобиля
-            </p>
-            <Button>Подробнее</Button>
-          </div>
-        </div>
-        <div
-          className={cn(styles.slide3, styles.slide, {
-            [styles.active]: sliderState === 3,
-          })}
-        >
-          <div className={styles.slideContent}>
-            <h2 className={styles.heading}>Бензин</h2>
-            <p className={styles.description}>
-              Полный бак на любой заправке города за наш счёт
-            </p>
-            <Button>Подробнее</Button>
-          </div>
-        </div>
-        <div
-          className={cn(styles.slide4, styles.slide, {
-            [styles.active]: sliderState === 4,
-          })}
-        >
-          <div className={styles.slideContent}>
-            <h2 className={styles.heading}>Обслуживание</h2>
-            <p className={styles.description}>
-              Автомобиль проходит еженедельное ТО
-            </p>
+            <h2 className={styles.heading}>
+              {sliderValues[sliderState - 1].title}
+            </h2>
+            <div className={styles.description}>
+              {sliderValues[sliderState - 1].description}
+            </div>
             <Button>Подробнее</Button>
           </div>
         </div>

@@ -21,12 +21,9 @@
     top: 0;
     width: 100%;
     height: 100%;
-    opacity: 0;
     transition: all 0.3s ease-in-out;
   }
-  .active {
-    opacity: 100%;
-  }
+
   .slide1 {
     background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
       url("/slide1.webp");
@@ -48,7 +45,6 @@
     height: 100%;
   }
   .slide > .slideContent > *:last-child {
-    background: linear-gradient(90deg, #13493f 0%, #0c7b1b 100%);
     width: 164px;
     height: 48px;
     border-radius: 4px;
@@ -70,19 +66,17 @@
     font-weight: 500;
     font-size: 32px;
     line-height: 100%;
-    letter-spacing: 0%;
   }
   .description {
     font-family: Roboto;
     font-weight: 300;
     font-size: 22px;
     line-height: 100%;
-    letter-spacing: 0%;
   }
   .slideContent {
     display: flex;
     flex-direction: column;
-    padding: 277px 64px;
+    padding: 277px 64px 0 64px;
     height: 100%;
   }
   .slideContent > *:last-child {

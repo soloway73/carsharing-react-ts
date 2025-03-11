@@ -31,9 +31,14 @@
   align-items: center;
   margin-left: auto;
   margin-right: 16px;
-  gap: 10px;
+  gap: 3px;
 }
-
+.geoTag:hover svg path {
+  stroke: var(--main-accent);
+}
+.geoTag:hover {
+  color: var(--main-accent);
+}
 .geoTag:hover,
 .phoneNumber:hover {
   text-decoration: underline;
