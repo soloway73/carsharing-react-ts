@@ -96,15 +96,19 @@ const Slider: React.FC = () => {
       </div>
       <div className={styles.dots}>
         <div
+          onClick={() => setSliderState(1)}
           className={cn(styles.dot, { [styles.activeDot]: sliderState === 1 })}
         ></div>
         <div
+          onClick={() => setSliderState(2)}
           className={cn(styles.dot, { [styles.activeDot]: sliderState === 2 })}
         ></div>
         <div
+          onClick={() => setSliderState(3)}
           className={cn(styles.dot, { [styles.activeDot]: sliderState === 3 })}
         ></div>
         <div
+          onClick={() => setSliderState(4)}
           className={cn(styles.dot, { [styles.activeDot]: sliderState === 4 })}
         ></div>
       </div>

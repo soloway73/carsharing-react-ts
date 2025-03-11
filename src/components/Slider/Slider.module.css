@@ -49,6 +49,18 @@
     height: 48px;
     border-radius: 4px;
   }
+  .slide1 > .slideContent > *:last-child {
+    background: linear-gradient(90deg, #13493f 0%, #0c7b1b 100%);
+  }
+  .slide2 > .slideContent > *:last-child {
+    background: linear-gradient(90deg, #13493f 0%, #0c7b1b 100%);
+  }
+  .slide3 > .slideContent > *:last-child {
+    background: linear-gradient(90deg, #13493f 0%, #0c7b1b 100%);
+  }
+  .slide4 > .slideContent > *:last-child {
+    background: linear-gradient(90deg, #13493f 0%, #0c7b1b 100%);
+  }
   .heading {
     font-family: Roboto;
     font-weight: 500;
@@ -117,6 +129,7 @@
     height: 8px;
     border-radius: 50%;
     background-color: #ffffff;
+    cursor: pointer;
   }
   .activeDot {
     background-color: var(--main-accent);
