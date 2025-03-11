@@ -57,10 +57,9 @@ const Slider: React.FC = () => {
           })}
         >
           <div className={styles.slideContent}>
-            <h2 className={styles.heading}>Бесплатная парковка</h2>
+            <h2 className={styles.heading}>Страховка</h2>
             <p className={styles.description}>
-              Оставляйте машину на платных городских парковках и разрешенных
-              местах, не нарушая ПДД, а также в аэропортах.
+              Полная страховка страховка автомобиля
             </p>
             <Button>Подробнее</Button>
           </div>
@@ -71,10 +70,9 @@ const Slider: React.FC = () => {
           })}
         >
           <div className={styles.slideContent}>
-            <h2 className={styles.heading}>Бесплатная парковка</h2>
+            <h2 className={styles.heading}>Бензин</h2>
             <p className={styles.description}>
-              Оставляйте машину на платных городских парковках и разрешенных
-              местах, не нарушая ПДД, а также в аэропортах.
+              Полный бак на любой заправке города за наш счёт
             </p>
             <Button>Подробнее</Button>
           </div>
@@ -85,10 +83,9 @@ const Slider: React.FC = () => {
           })}
         >
           <div className={styles.slideContent}>
-            <h2 className={styles.heading}>Бесплатная парковка</h2>
+            <h2 className={styles.heading}>Обслуживание</h2>
             <p className={styles.description}>
-              Оставляйте машину на платных городских парковках и разрешенных
-              местах, не нарушая ПДД, а также в аэропортах.
+              Автомобиль проходит еженедельное ТО
             </p>
             <Button>Подробнее</Button>
           </div>

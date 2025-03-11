@@ -9,10 +9,11 @@
   text-align: center;
   color: #ffffff;
   border: none;
-  cursor: pointer;
+  cursor: url("/pointer.svg"), pointer;
 }
 .button:hover {
   filter: brightness(90%);
+  cursor: url("/pointer.svg"), pointer;
 }
 
 .button:active {

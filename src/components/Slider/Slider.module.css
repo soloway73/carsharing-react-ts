@@ -28,16 +28,20 @@
     opacity: 100%;
   }
   .slide1 {
-    background-image: url("/slide1.webp");
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+      url("/slide1.webp");
   }
   .slide2 {
-    background-image: url("/slide2.webp");
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+      url("/slide2.webp");
   }
   .slide3 {
-    background-image: url("/slide3.webp");
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+      url("/slide3.webp");
   }
   .slide4 {
-    background-image: url("/slide4.webp");
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+      url("/slide4.webp");
   }
   .slides {
     width: 100%;
@@ -95,7 +99,7 @@
     justify-content: center;
     align-items: center;
     width: 32px;
-    cursor: pointer;
+    cursor: url("/pointer.svg"), pointer;
   }
   .slideButtonRight {
     z-index: 3;
@@ -107,13 +111,12 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    cursor: pointer;
+    cursor: url("/pointer.svg"), pointer;
     width: 32px;
   }
   .slideButtonLeft:hover,
   .slideButtonRight:hover {
-    background-color: var(--main-accent);
-    filter: opacity(25%);
+    background-color: #0ec26241;
   }
   .dots {
     width: 56px;
@@ -129,7 +132,7 @@
     height: 8px;
     border-radius: 50%;
     background-color: #ffffff;
-    cursor: pointer;
+    cursor: url("/pointer.svg"), pointer;
   }
   .activeDot {
     background-color: var(--main-accent);

@@ -64,7 +64,7 @@
   margin-right: 16px;
 }
 .burgerButtonWrapper {
-  cursor: pointer;
+  cursor: url("/pointer.svg"), pointer;
 }
 .burgerButton {
   width: 19px;
