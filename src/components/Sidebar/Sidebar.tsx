@@ -6,7 +6,7 @@ export function Sidebar() {
       <div className={styles.burgerButtonWrapper}>
         <div className={styles.burgerButton}></div>
       </div>
-      <div className={styles.changeLanguageButton}>Eng</div>
+      <button className={styles.changeLanguageButton}>Eng</button>
     </div>
   );
 }

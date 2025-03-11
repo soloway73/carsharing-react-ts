@@ -1,5 +1,5 @@
 .button {
-  width: 320px;
+  width: 100%;
   height: 50px;
   background: linear-gradient(90deg, var(--main-accent) 2.61%, #039f67 112.6%);
   font-style: normal;
@@ -11,9 +11,16 @@
   border: none;
   cursor: pointer;
 }
+.button:hover {
+  filter: brightness(90%);
+}
 
-@media (max-width: 767px) {
+.button:active {
+  filter: brightness(80%);
+}
+
+@media (min-width: 768px) {
   .button {
-    width: 100%;
+    width: 320px;
   }
 }

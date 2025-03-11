@@ -14,17 +14,36 @@
     color: #ffffff;
   }
   .slide {
-    background-image: url("/slide1.webp");
     background-size: cover;
     background-repeat: no-repeat;
+    background-position: 50% 50%;
+    position: absolute;
+    top: 0;
     width: 100%;
     height: 100%;
+    opacity: 0;
+    transition: all 0.3s ease-in-out;
+  }
+  .active {
+    opacity: 100%;
+  }
+  .slide1 {
+    background-image: url("/slide1.webp");
+  }
+  .slide2 {
+    background-image: url("/slide2.webp");
+  }
+  .slide3 {
+    background-image: url("/slide3.webp");
+  }
+  .slide4 {
+    background-image: url("/slide4.webp");
   }
   .slides {
     width: 100%;
     height: 100%;
   }
-  .slide1 > .slideContent > *:last-child {
+  .slide > .slideContent > *:last-child {
     background: linear-gradient(90deg, #13493f 0%, #0c7b1b 100%);
     width: 164px;
     height: 48px;
@@ -47,14 +66,16 @@
   .slideContent {
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    padding: 64px;
+    padding: 277px 64px;
     height: 100%;
   }
   .slideContent > *:last-child {
     margin-bottom: 150px;
   }
   .slideButtonLeft {
+    z-index: 3;
+    background: none;
+    border: none;
     position: absolute;
     height: 100%;
     left: 0;
@@ -65,6 +86,9 @@
     cursor: pointer;
   }
   .slideButtonRight {
+    z-index: 3;
+    background: none;
+    border: none;
     position: absolute;
     height: 100%;
     right: 0;
@@ -78,5 +102,29 @@
   .slideButtonRight:hover {
     background-color: var(--main-accent);
     filter: opacity(25%);
+  }
+  .dots {
+    width: 56px;
+    height: 8px;
+    position: absolute;
+    bottom: 38px;
+    left: calc(50% - 28px);
+    display: flex;
+    gap: 8px;
+  }
+  .dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background-color: #ffffff;
+  }
+  .activeDot {
+    background-color: var(--main-accent);
+  }
+}
+
+@media (min-width: 1440px) {
+  .slideContent {
+    padding: 237px 64px;
   }
 }

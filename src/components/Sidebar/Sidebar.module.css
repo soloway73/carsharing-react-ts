@@ -40,15 +40,19 @@
 
 .changeLanguageButton {
   cursor: pointer;
-  padding: 22px;
+  padding: 10px;
   font-weight: 400;
   font-size: 14px;
   line-height: 100%;
   color: var(--main-accent);
   text-align: center;
   margin: 5px;
-  max-width: 48px;
-  max-height: 48px;
+  width: 48px;
+  height: 48px;
+  background: none;
+  border: none;
+  align-self: center;
+  margin-bottom: 15px;
 }
 
 .changeLanguageButton:hover {
