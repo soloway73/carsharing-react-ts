@@ -53,13 +53,13 @@
     background: linear-gradient(90deg, #13493f 0%, #0c7b1b 100%);
   }
   .slide2 > .slideContent > *:last-child {
-    background: linear-gradient(90deg, #13493f 0%, #0c7b1b 100%);
+    background: linear-gradient(90deg, #132949 0%, #0c7b67 100%);
   }
   .slide3 > .slideContent > *:last-child {
-    background: linear-gradient(90deg, #13493f 0%, #0c7b1b 100%);
+    background: linear-gradient(90deg, #493013 0%, #7b0c3b 100%);
   }
   .slide4 > .slideContent > *:last-child {
-    background: linear-gradient(90deg, #13493f 0%, #0c7b1b 100%);
+    background: linear-gradient(90deg, #281349 0%, #720c7b 100%);
   }
   .heading {
     font-family: Roboto;
