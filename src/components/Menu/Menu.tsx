@@ -1,29 +1,33 @@
 import { ReactSVG } from "react-svg";
 import styles from "./Menu.module.css";
-import { useSelector } from "react-redux";
-import { RootState } from "../../store/store";
+import { useDispatch, useSelector } from "react-redux";
+import { AppDispatch, RootState } from "../../store/store";
 import cn from "classnames";
+import { NavLink } from "react-router-dom";
+import { menuSlice } from "../../store/menu.slice";
 
 export function Menu() {
   const menuState = useSelector((s: RootState) => s.menu.isActive);
+  const dispatch = useDispatch<AppDispatch>();
+  const toggleMenu = () => dispatch(menuSlice.actions.toggle());
 
   return (
     <div className={cn(styles.menu, { [styles.menuActive]: menuState })}>
       <div className={styles.equalizer}></div>
       <div className={styles.menuContent}>
         <div className={styles.menuLinks}>
-          <a href="#" className={styles.menuItem}>
+          <NavLink to={"/"} onClick={toggleMenu} className={styles.menuItem}>
             Парковка
-          </a>
-          <a href="#" className={styles.menuItem}>
+          </NavLink>
+          <NavLink to={"/"} onClick={toggleMenu} className={styles.menuItem}>
             Бензин
-          </a>
-          <a href="#" className={styles.menuItem}>
+          </NavLink>
+          <NavLink to={"/"} onClick={toggleMenu} className={styles.menuItem}>
             Страхование
-          </a>
-          <a href="#" className={styles.menuItem}>
+          </NavLink>
+          <NavLink to={"/"} onClick={toggleMenu} className={styles.menuItem}>
             Обслуживание
-          </a>
+          </NavLink>
         </div>
         <div className={styles.socialLinks}>
           <a href="#" className={styles.socialLink}>

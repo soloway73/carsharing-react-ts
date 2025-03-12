@@ -1,4 +1,14 @@
 import styles from "./Button.module.css";
-export function Button({ children }: { children: React.ReactNode }) {
-  return <button className={styles.button}>{children}</button>;
+
+interface ButtonProps {
+  children: React.ReactNode;
+  onClick?: () => void;
+}
+
+export function Button({ children, onClick }: ButtonProps) {
+  return (
+    <button className={styles.button} onClick={onClick}>
+      {children}
+    </button>
+  );
 }
