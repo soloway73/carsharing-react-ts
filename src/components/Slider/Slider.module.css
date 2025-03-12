@@ -13,6 +13,7 @@
     min-width: 410px;
     flex-grow: 2;
     color: #ffffff;
+    min-height: 620px;
   }
   .slide {
     background-size: cover;

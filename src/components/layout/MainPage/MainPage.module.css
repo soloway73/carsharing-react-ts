@@ -194,6 +194,9 @@
   .geoTag {
     margin-right: 32px;
   }
+  .main {
+    min-height: 620px;
+  }
 }
 
 @media (min-width: 1024px) {
@@ -201,6 +204,7 @@
     width: auto;
     min-width: 549px;
     flex-grow: 1;
+    min-height: 620px;
   }
   .content {
     margin-top: 159px;
