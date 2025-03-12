@@ -1,10 +1,11 @@
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
-import { MainPage } from "./components/layout/MainPage/MainPage.tsx";
 import "./index.css";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { Provider } from "react-redux";
 import { store } from "./store/store.ts";
+import { MainPage } from "./components/Pages/MainPage/MainPage.tsx";
+
 const router = createBrowserRouter([
   {
     path: "/",

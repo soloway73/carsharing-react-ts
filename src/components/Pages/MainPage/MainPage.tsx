@@ -1,15 +1,14 @@
-import { ReactSVG } from "react-svg";
+import cn from "classnames";
+import { useDispatch, useSelector } from "react-redux";
+import { menuSlice } from "../../../store/menu.slice";
+import { AppDispatch, RootState } from "../../../store/store";
 import { Button } from "../../Button/Button";
 import { Heading } from "../../Heading/Heading";
 import { Menu } from "../../Menu/Menu";
 import { Sidebar } from "../../Sidebar/Sidebar";
 import Slider from "../../Slider/Slider";
 import styles from "./MainPage.module.css";
-import GeoTag from "/GeoTag.svg";
-import { menuSlice } from "../../../store/menu.slice";
-import { useDispatch, useSelector } from "react-redux";
-import { AppDispatch, RootState } from "../../../store/store";
-import cn from "classnames";
+import GeoTag from "../../../assets/GeoTag.svg?react";
 
 export function MainPage() {
   const dispatch = useDispatch<AppDispatch>();
@@ -31,7 +30,7 @@ export function MainPage() {
           </div>
           <Heading />
           <a href="#" className={styles.geoTag}>
-            <ReactSVG src={GeoTag} />
+            <GeoTag />
             Ульяновск
           </a>
         </header>
