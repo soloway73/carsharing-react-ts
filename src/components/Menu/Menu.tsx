@@ -3,13 +3,14 @@ import styles from "./Menu.module.css";
 import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch, RootState } from "../../store/store";
 import cn from "classnames";
-import { NavLink } from "react-router-dom";
+import { NavLink, useLocation } from "react-router-dom";
 import { menuSlice } from "../../store/menu.slice";
 
 export function Menu() {
   const menuState = useSelector((s: RootState) => s.menu.isActive);
   const dispatch = useDispatch<AppDispatch>();
   const toggleMenu = () => dispatch(menuSlice.actions.toggle());
+  const { pathname } = useLocation();
 
   return (
     <div className={cn(styles.menu, { [styles.menuActive]: menuState })}>
@@ -42,7 +43,7 @@ export function Menu() {
         </div>
         <div className={styles.changeLanguageButton}>Eng</div>
       </div>
-      <div className={styles.opacityBox}></div>
+      {pathname === "/" && <div className={styles.opacityBox}></div>}
     </div>
   );
 }
