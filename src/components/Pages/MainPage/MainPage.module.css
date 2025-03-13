@@ -12,16 +12,6 @@
   height: 100dvh;
 }
 
-.footer {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-  padding: 16px;
-  align-self: stretch;
-  background-color: #151b1f;
-  margin-top: auto;
-}
-
 .geoTag {
   font-weight: 400;
   font-size: 14px;
@@ -40,23 +30,8 @@
 .geoTag:hover {
   color: var(--main-accent);
 }
-.geoTag:hover,
-.phoneNumber:hover {
+.geoTag:hover {
   text-decoration: underline;
-}
-
-.phoneNumber {
-  font-weight: 400;
-  font-size: 13px;
-  line-height: 100%;
-  color: var(--main-accent);
-}
-
-.copyright {
-  font-weight: 400;
-  font-size: 13px;
-  line-height: 100%;
-  color: var(--gray-light);
 }
 
 .header {
@@ -151,26 +126,11 @@
   .burgerButtonWrapper {
     display: none;
   }
-  .footer {
-    flex-direction: row;
-    justify-content: space-between;
-  }
   .header > *:nth-child(2) {
     margin: 32px;
     margin-right: auto;
   }
-  .footer {
-    background-color: transparent;
-  }
-  .phoneNumber {
-    color: var(--black);
-    align-self: center;
-    margin-right: 32px;
-  }
-  .copyright {
-    color: var(--gray);
-    order: -1;
-  }
+
   .content > *:nth-child(1),
   .content > *:nth-child(2) {
     font-weight: 700;

@@ -1,0 +1,18 @@
+.geoTag {
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 100%;
+  color: var(--gray);
+  display: flex;
+  align-items: center;
+  margin-left: auto;
+  margin-right: 16px;
+  gap: 3px;
+}
+.geoTag:hover svg path {
+  stroke: var(--main-accent);
+}
+
+.geoTag:hover {
+  color: var(--main-accent);
+}

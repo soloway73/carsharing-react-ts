@@ -1,0 +1,63 @@
+.header {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 100%;
+}
+.header > *:nth-child(2) {
+  margin-left: auto;
+  margin-right: 16px;
+}
+.burgerButtonWrapper {
+  cursor: url("/pointer.svg"), pointer;
+  z-index: 10;
+}
+.burgerButton {
+  width: 19px;
+  height: 2px;
+  position: relative;
+  background-color: var(--black);
+  border-radius: 2px;
+  margin: 30px;
+}
+
+.burgerButton::before,
+.burgerButton::after {
+  content: "";
+  position: absolute;
+  width: 19px;
+  height: 2px;
+  background-color: var(--black);
+  border-radius: 2px;
+  transition: all 0.3s ease 0s;
+}
+
+.burgerButton::before {
+  top: -7px;
+}
+.burgerButton::after {
+  top: 7px;
+}
+.burgerButtonActive {
+  background-color: transparent;
+}
+.burgerButtonActive::before {
+  top: 0;
+  transform: rotate(45deg);
+  background-color: var(--gray-light);
+}
+.burgerButtonActive::after {
+  top: 0;
+  transform: rotate(-45deg);
+  background-color: var(--gray-light);
+}
+
+@media (min-width: 768px) {
+  .burgerButtonWrapper {
+    display: none;
+  }
+  .header > *:nth-child(2) {
+    margin: 32px;
+    margin-right: auto;
+  }
+}

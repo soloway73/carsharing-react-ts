@@ -5,3 +5,7 @@
   text-align: right;
   color: var(--main-accent);
 }
+
+.headingActive {
+  cursor: url("/pointer.svg"), pointer;
+}
