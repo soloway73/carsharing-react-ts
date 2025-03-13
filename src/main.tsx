@@ -6,6 +6,7 @@ import { Provider } from "react-redux";
 import { store } from "./store/store.ts";
 import { Layout } from "./Layout/Layout.tsx";
 import { MainPage } from "./components/Pages/MainPage/MainPage.tsx";
+import { Order } from "./components/Pages/Order/Order.tsx";
 
 const router = createBrowserRouter([
   {
@@ -19,7 +20,25 @@ const router = createBrowserRouter([
       },
       {
         path: "/order",
-        element: <div>ЗАКАЖЫ ТАЧКУ СЛЫЫЫШ</div>,
+        element: <Order />,
+        children: [
+          {
+            path: "location",
+            element: <div>location</div>,
+          },
+          {
+            path: "model",
+            element: <div>model</div>,
+          },
+          {
+            path: "options",
+            element: <div>options</div>,
+          },
+          {
+            path: "summary",
+            element: <div>summary</div>,
+          },
+        ],
       },
     ],
   },

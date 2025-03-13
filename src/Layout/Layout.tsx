@@ -11,7 +11,7 @@ export function Layout() {
   return (
     <div className={styles.layout}>
       <Menu />
-      <div className={styles.mainPage}>
+      <div className={styles.contentWrapper}>
         <Sidebar />
         <div className={styles.main}>
           <Header />

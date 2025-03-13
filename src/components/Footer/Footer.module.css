@@ -24,6 +24,7 @@
 
 .phoneNumber:hover {
   text-decoration: underline;
+  color: var(--main-accent);
 }
 
 @media (min-width: 768px) {
@@ -42,5 +43,12 @@
   .copyright {
     color: var(--gray);
     order: -1;
+  }
+}
+
+@media (min-width: 1440px) {
+  .footer {
+    padding-right: 64px;
+    padding-left: 64px;
   }
 }

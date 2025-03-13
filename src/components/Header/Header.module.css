@@ -61,3 +61,11 @@
     margin-right: auto;
   }
 }
+
+@media (min-width: 1440px) {
+  .header {
+    margin-left: 32px;
+    margin-right: 32px;
+    width: calc(100% - 64px);
+  }
+}

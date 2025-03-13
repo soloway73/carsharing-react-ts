@@ -173,3 +173,11 @@
     margin-top: 0;
   }
 }
+
+@media (min-width: 1440px) {
+  .content {
+    padding-right: 32px;
+    padding-left: 32px;
+    width: calc(100% - 64px);
+  }
+}
