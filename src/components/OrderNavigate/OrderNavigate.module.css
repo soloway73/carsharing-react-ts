@@ -1,11 +1,11 @@
 .orderNavigate {
-  width: 100%;
   height: 32px;
   border-bottom: 1px solid var(--gray-light);
   display: flex;
   justify-content: flex-start;
   align-items: center;
   padding-left: 64px;
+  width: calc(100% - 64px);
   gap: 16px;
 }
 

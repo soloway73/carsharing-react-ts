@@ -16,7 +16,6 @@ export function Menu() {
 
   return (
     <div className={cn(styles.menu, { [styles.menuActive]: menuState })}>
-      {pathname === "/" && <div className={styles.equalizer}></div>}
       <div className={styles.menuContent}>
         <div className={styles.menuLinks}>
           <NavLink to={"/"} onClick={toggleMenu} className={styles.menuItem}>
