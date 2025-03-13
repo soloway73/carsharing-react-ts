@@ -4,11 +4,6 @@ import Arrow from "../../assets/Arrow.svg?react";
 import cn from "classnames";
 export function OrderNavigate() {
   const { pathname } = useLocation();
-  const isActiveLocation =
-    pathname === "/order/location" ||
-    pathname === "/order/model" ||
-    pathname === "/order/options" ||
-    pathname === "/order/summary";
   const isActiveModel =
     pathname === "/order/model" ||
     pathname === "/order/options" ||
@@ -21,9 +16,7 @@ export function OrderNavigate() {
     <div className={styles.orderNavigate}>
       <NavLink
         to="/order/location"
-        className={cn(styles.orderNavigateItem, {
-          [styles.orderNavigateItemActive]: isActiveLocation,
-        })}
+        className={cn(styles.orderNavigateItem, styles.orderNavigateItemActive)}
       >
         Местоположение
       </NavLink>
