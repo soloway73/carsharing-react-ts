@@ -4,7 +4,7 @@ import axios from "axios";
 import { CitiesResponse } from "../interfaces/location.interface";
 
 export interface CitiesState {
-  cities: CitiesResponse[] | undefined;
+  cities: CitiesResponse[] | [];
   isLoading: boolean;
 }
 
@@ -22,7 +22,10 @@ export const getCities = createAsyncThunk<
   }
 });
 
-const initialState: CitiesResponse[] = [];
+const initialState: CitiesState = {
+  cities: [],
+  isLoading: false,
+};
 
 export const citiesSlice = createSlice({
   name: "cities",
@@ -30,7 +33,7 @@ export const citiesSlice = createSlice({
   reducers: {},
   extraReducers: (builder) => {
     builder.addCase(getCities.fulfilled, (state, action) => {
-      action.payload.map((city) => state.push(city));
+      state.cities = action.payload;
     });
   },
 });

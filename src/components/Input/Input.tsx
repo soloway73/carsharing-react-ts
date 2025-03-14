@@ -28,7 +28,11 @@ export function Input({
       />
       <div className={styles.dropdownMenu}>
         {dropdownValues.length > 0 &&
-          dropdownValues.map((item, index) => <div key={index}>{item}</div>)}
+          dropdownValues.map((item, index) => (
+            <div className={styles.menuItem} key={index}>
+              {item}
+            </div>
+          ))}
       </div>
     </div>
   );

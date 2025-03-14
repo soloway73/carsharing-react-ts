@@ -23,11 +23,10 @@ export function Location() {
           placeholder="Введите город"
           id="location"
           label="Город"
-          dropdownValues={citiesSlice.map((item) => item.name)}
+          dropdownValues={citiesSlice.cities.map((item) => item.name)}
         />
         <Input placeholder="Введите адрес" id="address" label="Пункт выдачи" />
       </div>
-
       <Map />
     </div>
   );
