@@ -1,0 +1,31 @@
+.totalLine {
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+  gap: 12px;
+}
+
+.dashed {
+  border-bottom: 1px dashed var(--gray);
+  width: auto;
+  min-width: 74px;
+  margin-bottom: 2px;
+  flex-grow: 1;
+}
+
+.totalLineTitle {
+  font-weight: 300;
+  font-size: 14px;
+  line-height: 16px;
+  color: #121212;
+  flex-shrink: 0;
+}
+
+.totalLineValue {
+  font-weight: 300;
+  font-size: 14px;
+  line-height: 16px;
+  text-align: right;
+  color: #999999;
+  max-width: 105px;
+}

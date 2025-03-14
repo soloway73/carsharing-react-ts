@@ -24,6 +24,10 @@ const router = createBrowserRouter([
       },
       {
         path: "/order",
+        element: <Navigate to="/order/location" replace />,
+      },
+      {
+        path: "/order/*",
         element: <Order />,
         children: [
           {
