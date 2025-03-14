@@ -784,6 +784,7 @@ function assignRandomImageURL(cars) {
 }
 
 mockDatabase.cars = assignRandomImageURL(mockDatabase.cars);
+const getAllCars = () => mockDatabase.cars;
 
 // Фильтрация
 const carsInCity = (cityId) =>
@@ -801,4 +802,10 @@ const filterLocations = (request) => {
     );
 };
 
-export { mockDatabase, carsInCity, filterCities, filterLocations };
+export default {
+  mockDatabase,
+  carsInCity,
+  filterCities,
+  filterLocations,
+  getAllCars,
+};

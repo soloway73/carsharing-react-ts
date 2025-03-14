@@ -3,9 +3,16 @@ export interface InputProps {
   label: string;
   placeholder: string;
   id: string;
+  dropdownValues?: string[];
   onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
-export function Input({ placeholder, id, label, onChange }: InputProps) {
+export function Input({
+  placeholder,
+  id,
+  label,
+  dropdownValues = [],
+  onChange,
+}: InputProps) {
   return (
     <div className={styles.wrapper}>
       <label className={styles.label} htmlFor={id}>
@@ -19,6 +26,10 @@ export function Input({ placeholder, id, label, onChange }: InputProps) {
         name={id}
         onChange={onChange}
       />
+      <div className={styles.dropdownMenu}>
+        {dropdownValues.length > 0 &&
+          dropdownValues.map((item, index) => <div key={index}>{item}</div>)}
+      </div>
     </div>
   );
 }

@@ -23,3 +23,7 @@
   line-height: 16px;
   color: var(--black);
 }
+
+.dropdownMenu {
+  position: absolute;
+}

@@ -17,4 +17,4 @@ export const menuSlice = createSlice({
 });
 
 export default menuSlice.reducer;
-export const cartActions = menuSlice.actions;
+export const menuActions = menuSlice.actions;
