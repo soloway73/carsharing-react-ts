@@ -1,0 +1,9 @@
+.map {
+  display: flex;
+  flex-direction: column;
+  font-weight: 300;
+  font-size: 14px;
+  line-height: 16px;
+  margin-top: 45px;
+  gap: 16px;
+}

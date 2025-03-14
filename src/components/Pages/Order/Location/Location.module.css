@@ -1,0 +1,11 @@
+.location {
+  padding-top: 32px;
+}
+
+.inputs {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  align-items: self-end;
+  width: 320px;
+}

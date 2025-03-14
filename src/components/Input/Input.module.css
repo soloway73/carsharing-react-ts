@@ -1,0 +1,25 @@
+.input {
+  width: 210px;
+  border: none;
+  border-bottom: 1px solid var(--gray);
+  padding-left: 8px;
+}
+
+.input::placeholder {
+  color: var(--gray);
+  font-weight: 300;
+  font-size: 14px;
+  line-height: 16px;
+}
+.wrapper {
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
+}
+
+.label {
+  font-weight: 300;
+  font-size: 14px;
+  line-height: 16px;
+  color: var(--black);
+}

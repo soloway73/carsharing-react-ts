@@ -11,6 +11,7 @@ import { MainPage } from "./components/Pages/MainPage/MainPage.tsx";
 import "./index.css";
 import { store } from "./store/store.ts";
 import { Order } from "./components/Pages/Order/Order.tsx";
+import { Location } from "./components/Pages/Order/Location/Location.tsx";
 
 const router = createBrowserRouter([
   {
@@ -32,7 +33,7 @@ const router = createBrowserRouter([
         children: [
           {
             path: "location",
-            element: <div>location</div>,
+            element: <Location />,
           },
           {
             path: "model",
