@@ -1,11 +1,15 @@
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
-import "./index.css";
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { Provider } from "react-redux";
-import { store } from "./store/store.ts";
+import {
+  createBrowserRouter,
+  Navigate,
+  RouterProvider,
+} from "react-router-dom";
 import { Layout } from "./Layout/Layout.tsx";
 import { MainPage } from "./components/Pages/MainPage/MainPage.tsx";
+import "./index.css";
+import { store } from "./store/store.ts";
 import { Order } from "./components/Pages/Order/Order.tsx";
 
 const router = createBrowserRouter([
@@ -38,9 +42,17 @@ const router = createBrowserRouter([
             path: "summary",
             element: <div>summary</div>,
           },
+          {
+            path: "*",
+            element: <Navigate to="/order/location" replace />,
+          },
         ],
       },
     ],
+  },
+  {
+    path: "*",
+    element: <div>404</div>,
   },
 ]);
 createRoot(document.getElementById("root")!).render(
