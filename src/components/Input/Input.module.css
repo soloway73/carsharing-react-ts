@@ -47,7 +47,8 @@
   display: none;
 }
 
-.input:focus + .dropdownMenu {
+.input:focus + .dropdownMenu,
+.dropdownMenu:hover {
   display: block;
 }
 
