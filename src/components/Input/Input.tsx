@@ -24,7 +24,6 @@ export function Input({
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (appearance === "city") {
       dispatch(totalActions.addCity(e.target.value));
-      dispatch(totalActions.addLocation(e.target.value));
     }
     if (appearance === "location") {
       dispatch(totalActions.addLocation(e.target.value));
