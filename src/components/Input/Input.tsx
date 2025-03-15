@@ -24,6 +24,7 @@ export function Input({
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (appearance === "city") {
       dispatch(totalActions.addCity(e.target.value));
+      dispatch(totalActions.addLocation(e.target.value));
     }
     if (appearance === "location") {
       dispatch(totalActions.addLocation(e.target.value));
@@ -33,10 +34,10 @@ export function Input({
   const value = appearance === "city" ? totalSlice.city : totalSlice.location;
   const handleItemClick = (item: string) => {
     if (appearance === "city") {
-      dispatch(totalActions.addCity(item)); // Обновляем город
+      dispatch(totalActions.addCity(item));
     }
     if (appearance === "location") {
-      dispatch(totalActions.addLocation(item)); // Обновляем локацию
+      dispatch(totalActions.addLocation(item));
     }
   };
   const filteredValues = dropdownValues
