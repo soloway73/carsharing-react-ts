@@ -40,7 +40,9 @@ export function Input({
     }
   };
   const filteredValues = dropdownValues
-    .filter((item) => item.includes(value))
+    .filter((item) =>
+      item.toLocaleLowerCase().includes(value.toLocaleLowerCase())
+    )
     .map((item, index) => (
       <div
         className={styles.menuItem}
@@ -74,14 +76,14 @@ export function Input({
         onChange={handleChange}
         value={value}
       />
+      <div className={styles.dropdownMenu}>
+        {dropdownValues.length > 0 && filteredValues}
+      </div>
       {value && (
         <span className={styles.clearButton} onClick={handleClear}>
           &#x2715;
         </span>
       )}
-      <div className={styles.dropdownMenu}>
-        {dropdownValues.length > 0 && filteredValues}
-      </div>
     </div>
   );
 }

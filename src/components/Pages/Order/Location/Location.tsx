@@ -15,8 +15,6 @@ export function Location() {
     dispatch(getCities());
   }, [dispatch]);
 
-  console.log(citiesSlice);
-
   return (
     <div className={styles.location}>
       <div className={styles.inputs}>
