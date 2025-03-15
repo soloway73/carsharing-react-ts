@@ -51,6 +51,15 @@ export function Input({
       </div>
     ));
 
+  const handleClear = () => {
+    if (appearance === "city") {
+      dispatch(totalActions.addCity("")); // Очищаем город
+    }
+    if (appearance === "location") {
+      dispatch(totalActions.addLocation("")); // Очищаем локацию
+    }
+  };
+
   return (
     <div className={styles.wrapper}>
       <label className={styles.label} htmlFor={id}>
@@ -65,6 +74,11 @@ export function Input({
         onChange={handleChange}
         value={value}
       />
+      {value && (
+        <span className={styles.clearButton} onClick={handleClear}>
+          &#x2715;
+        </span>
+      )}
       <div className={styles.dropdownMenu}>
         {dropdownValues.length > 0 && filteredValues}
       </div>

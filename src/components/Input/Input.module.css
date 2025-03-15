@@ -63,3 +63,18 @@
 .menuItem:hover {
   background-color: #f0f0f0;
 }
+
+.clearButton {
+  position: absolute;
+  top: 40%;
+  right: 5px;
+  transform: translateY(-50%);
+  font-size: 16px;
+  color: #aaa;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.clearButton:hover {
+  color: var(--main-accent);
+}
