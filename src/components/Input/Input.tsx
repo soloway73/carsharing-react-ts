@@ -55,10 +55,11 @@ export function Input({
 
   const handleClear = () => {
     if (appearance === "city") {
-      dispatch(totalActions.addCity("")); // Очищаем город
+      dispatch(totalActions.addCity(""));
+      dispatch(totalActions.addLocation(""));
     }
     if (appearance === "location") {
-      dispatch(totalActions.addLocation("")); // Очищаем локацию
+      dispatch(totalActions.addLocation(""));
     }
   };
 
