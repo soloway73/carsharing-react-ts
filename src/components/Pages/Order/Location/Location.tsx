@@ -50,7 +50,7 @@ export function Location() {
           appearance="location"
           dropdownValues={citiesSlice.cities
             .find((item) => item.name === totalSlice.city)
-            ?.locations.map((item) => item.name)}
+            ?.locations.map((item) => item.address)}
         />
       </div>
       <MapArea />

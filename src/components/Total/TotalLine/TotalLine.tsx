@@ -1,11 +1,16 @@
 import styles from "./TotalLine.module.css";
 
-export function TotalLine() {
+export interface TotalLineProps {
+  title: string;
+  value: string;
+}
+
+export function TotalLine({ title, value }: TotalLineProps) {
   return (
     <div className={styles.totalLine}>
-      <div className={styles.totalLineTitle}>Пункт выдачи</div>
+      <div className={styles.totalLineTitle}>{title}</div>
       <div className={styles.dashed}></div>
-      <div className={styles.totalLineValue}>Ульяновск, Нариманова 42</div>
+      <div className={styles.totalLineValue}>{value}</div>
     </div>
   );
 }
