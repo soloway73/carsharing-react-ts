@@ -1,35 +1,34 @@
+import { InputHTMLAttributes, useMemo } from "react";
 import styles from "./Input.module.css";
 
 export interface InputProps {
   label: string;
-  placeholder: string;
-  id: string;
-  dropdownValues?: string[];
-  value?: string;
-  handleChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
-  handleItemClick?: (e: React.MouseEvent) => void;
-  handleClear?: () => void;
+  filteredValues?: string[];
+  onItemClick?: (e: React.MouseEvent) => void;
+  onClear?: () => void;
 }
 
 export function Input({
   placeholder,
   id,
   label,
-  dropdownValues = [],
+  name,
+  filteredValues = [],
   value = "",
-  handleChange,
-  handleItemClick,
-  handleClear,
-}: InputProps) {
-  const filteredValues = dropdownValues
-    .filter((item) =>
-      item.toLocaleLowerCase().includes(value.toLocaleLowerCase())
-    )
-    .map((item, index) => (
-      <div className={styles.menuItem} key={index} onClick={handleItemClick}>
-        {item}
-      </div>
-    ));
+  onChange,
+  onItemClick,
+  onClear,
+  ...props
+}: InputHTMLAttributes<HTMLInputElement> & InputProps) {
+  const items = useMemo(
+    () =>
+      filteredValues.map((item, index) => (
+        <div className={styles.menuItem} key={index} onClick={onItemClick}>
+          {item}
+        </div>
+      )),
+    [filteredValues, onItemClick]
+  );
 
   return (
     <div className={styles.wrapper}>
@@ -41,15 +40,14 @@ export function Input({
         placeholder={placeholder}
         className={styles.input}
         id={id}
-        name={id}
-        onChange={handleChange}
+        name={name}
+        onChange={onChange}
         value={value}
+        {...props}
       />
-      <div className={styles.dropdownMenu}>
-        {dropdownValues.length > 0 && filteredValues}
-      </div>
+      <div className={styles.dropdownMenu}>{items.length > 0 && items}</div>
       {value && (
-        <span className={styles.clearButton} onClick={handleClear}>
+        <span className={styles.clearButton} onClick={onClear}>
           &#x2715;
         </span>
       )}

@@ -25,7 +25,7 @@ export function MapArea() {
           className={styles.map}
           state={{
             center: locationCoordinates,
-            zoom: 11,
+            zoom: 15,
           }}
         >
           {allCoordinatesArray.map((coordinatesArray) => {

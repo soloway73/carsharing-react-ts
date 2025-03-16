@@ -18,17 +18,22 @@ export function CityInput() {
   const handleItemClick = (e: React.MouseEvent) => {
     dispatch(totalActions.addCity(e.currentTarget.textContent as string));
   };
-
+  const filteredCities = citiesSlice.cities
+    .map((item) => item.name)
+    .filter((item) =>
+      item.toLowerCase().includes(totalSlice.city.toLowerCase())
+    );
   return (
     <Input
       placeholder="Введите город"
       id="city"
+      name="city"
       label="Город"
       value={totalSlice.city}
-      dropdownValues={citiesSlice.cities.map((item) => item.name)}
-      handleClear={handleClear}
-      handleChange={handleChange}
-      handleItemClick={handleItemClick}
+      filteredValues={filteredCities}
+      onClear={handleClear}
+      onChange={handleChange}
+      onItemClick={handleItemClick}
     />
   );
 }

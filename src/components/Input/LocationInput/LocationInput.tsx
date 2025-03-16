@@ -20,18 +20,22 @@ export function LocationInput() {
 
   const filteredLocations = citiesSlice.cities
     .find((item) => item.name === totalSlice.city)
-    ?.locations.map((item) => item.address);
+    ?.locations.map((item) => item.address)
+    .filter((item) =>
+      item.toLowerCase().includes(totalSlice.location.toLowerCase())
+    );
 
   return (
     <Input
       placeholder="Введите адрес"
       id="location"
+      name="location"
       label="Пункт выдачи"
       value={totalSlice.location}
-      dropdownValues={filteredLocations}
-      handleClear={handleClear}
-      handleChange={handleChange}
-      handleItemClick={handleItemClick}
+      filteredValues={filteredLocations}
+      onClear={handleClear}
+      onChange={handleChange}
+      onItemClick={handleItemClick}
     />
   );
 }
