@@ -3,7 +3,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { getCities } from "../../../../store/cities.slice";
 import { AppDispatch, RootState } from "../../../../store/store";
 import { totalActions } from "../../../../store/total.slice";
-import { Input } from "../../../Input/Input";
+import { CityInput } from "../../../Input/CityInput/CityInput";
+import { LocationInput } from "../../../Input/LocationInput/LocationInput";
 import { MapArea } from "../../../MapArea/MapArea";
 import styles from "./Location.module.css";
 
@@ -22,7 +23,7 @@ export function Location() {
         (item) => item.name === totalSlice.city
       );
       const location = city?.locations.find(
-        (item) => item.name === totalSlice.location
+        (item) => item.address === totalSlice.location
       );
       if (!location) return city?.locations[0]?.coordinates;
       return location?.coordinates;
@@ -36,22 +37,8 @@ export function Location() {
   return (
     <div className={styles.location}>
       <div className={styles.inputs}>
-        <Input
-          placeholder="Введите город"
-          id="city"
-          label="Город"
-          dropdownValues={citiesSlice.cities.map((item) => item.name)}
-          appearance="city"
-        />
-        <Input
-          placeholder="Введите адрес"
-          id="location"
-          label="Пункт выдачи"
-          appearance="location"
-          dropdownValues={citiesSlice.cities
-            .find((item) => item.name === totalSlice.city)
-            ?.locations.map((item) => item.address)}
-        />
+        <CityInput />
+        <LocationInput />
       </div>
       <MapArea />
     </div>

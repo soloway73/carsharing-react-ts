@@ -10,12 +10,12 @@ export function Total() {
   return (
     <div className={styles.total}>
       <div className={styles.title}>Ваш заказ:</div>
-      {
+      {totalSlice.city && totalSlice.location && (
         <TotalLine
           title={"Пункт выдачи"}
           value={totalSlice.city + ", " + totalSlice.location}
         />
-      }
+      )}
       <div className={styles.totalPrice}>
         <span className={styles.bold}>Цена:</span> от 8 000 до 12 000 ₽
       </div>
