@@ -3,6 +3,7 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 export interface ITotalState {
   city: string;
   location: string;
+  coordinates: [number, number];
   model: string;
   color: string;
   rentalDuration: number;
@@ -16,6 +17,7 @@ export interface ITotalState {
 const initialState: ITotalState = {
   city: "",
   location: "",
+  coordinates: [54.32097709395514, 48.389156047245756],
   model: "",
   color: "",
   rentalDuration: 0,
@@ -35,6 +37,9 @@ export const totalSlice = createSlice({
     },
     addLocation: (state, action: PayloadAction<string>) => {
       state.location = action.payload;
+    },
+    addCoordinates: (state, action: PayloadAction<[number, number]>) => {
+      state.coordinates = action.payload;
     },
     addModel: (state, action: PayloadAction<string>) => {
       state.model = action.payload;

@@ -1,4 +1,4 @@
-.map {
+.mapWrapper {
   display: flex;
   flex-direction: column;
   font-weight: 300;
@@ -6,4 +6,9 @@
   line-height: 16px;
   margin-top: 45px;
   gap: 16px;
+}
+
+.map {
+  width: 736px;
+  height: 352px;
 }
