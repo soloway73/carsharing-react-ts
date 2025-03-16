@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getCities } from "../../../../store/cities.slice";
+import { getCars, getCities } from "../../../../store/cities.slice";
 import { AppDispatch, RootState } from "../../../../store/store";
 import { totalActions } from "../../../../store/total.slice";
 import { CityInput } from "../../../Input/CityInput/CityInput";
@@ -15,6 +15,7 @@ export function Location() {
 
   useEffect(() => {
     dispatch(getCities());
+    dispatch(getCars());
   }, [dispatch]);
 
   useEffect(() => {

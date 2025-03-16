@@ -12,3 +12,8 @@
   width: 736px;
   height: 352px;
 }
+
+.balloonContent {
+  min-width: 200px;
+  min-height: 200px;
+}

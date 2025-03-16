@@ -13,3 +13,15 @@ export interface CitiesResponse {
   name: string;
   locations: Location[];
 }
+
+export interface CarsResponse {
+  id: number;
+  model: string;
+  year: number;
+  color: string;
+  pricePerDay: number;
+  available: boolean;
+  cityId: number;
+  locationId: number;
+  imageURL: string;
+}
