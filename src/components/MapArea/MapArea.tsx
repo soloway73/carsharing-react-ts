@@ -6,18 +6,17 @@ import config from "../../config/config.json";
 import { AppDispatch, RootState } from "../../store/store";
 import { totalActions } from "../../store/total.slice";
 import styles from "./MapArea.module.css";
+import circleSVG from "../../assets/circle.svg";
 
 export function MapArea() {
-  // const cars = useSelector((s: RootState) => s.cities).cars;
   const { cities } = useSelector((s: RootState) => s.cities);
   const mapRef = useRef<ymaps.Map | null>(null);
+  const { cars } = useSelector((s: RootState) => s.cities);
   const dispatch = useDispatch<AppDispatch>();
 
   const locationCoordinates = useSelector(
     (s: RootState) => s.total
   ).coordinates;
-  const locationAddress = useSelector((s: RootState) => s.total).location;
-  const totalCity = useSelector((s: RootState) => s.total).city;
 
   const handleBalloonClick = useCallback(
     (coords: number[], address: string, city: string) => {
@@ -27,8 +26,14 @@ export function MapArea() {
         dispatch(totalActions.addLocation(address));
       }
     },
-    [cities, dispatch]
+    [dispatch]
   );
+
+  const changeCoordinates = useCallback((coords: number[]) => {
+    if (mapRef.current) {
+      mapRef.current.panTo(coords, { duration: 1000 });
+    }
+  }, []);
   // const availableCars = (item: Location) =>
   //   cars
   //     .filter((car) => car.locationId === item.id)
@@ -51,42 +56,52 @@ export function MapArea() {
   const placemarks = useMemo(
     () =>
       cities.map((city) =>
-        city.locations.map((item) => (
-          <Placemark
-            key={item.id}
-            geometry={[item.coordinates.lat, item.coordinates.lng]}
-            options={{
-              iconLayout: "default#image",
-              iconImageHref: "/src/assets/Circle.svg",
-              iconImageSize: [30, 30],
-              iconImageOffset: [-15, -30],
-              balloonPane: "outerBalloon",
-            }}
-            modules={["geoObject.addon.balloon", "geoObject.addon.hint"]}
-            onClick={() =>
-              handleBalloonClick(
-                [item.coordinates.lat, item.coordinates.lng],
-                item.address,
-                city.name
-              )
-            }
-            properties={{
-              balloonContent: `<div class=${styles.balloonContent}>
+        city.locations.map((item) => {
+          const availableCars = cars
+            .filter(
+              (car) => car.locationId === item.id && car.available === true
+            )
+            .map((car) => car.model);
+          return (
+            <Placemark
+              key={item.id}
+              geometry={[item.coordinates.lat, item.coordinates.lng]}
+              options={{
+                iconLayout: "default#image",
+                iconImageHref: circleSVG,
+                iconImageSize: [30, 30],
+                iconImageOffset: [-15, -30],
+                balloonPane: "outerBalloon",
+              }}
+              modules={["geoObject.addon.balloon", "geoObject.addon.hint"]}
+              onClick={() =>
+                handleBalloonClick(
+                  [item.coordinates.lat, item.coordinates.lng],
+                  item.address,
+                  city.name
+                )
+              }
+              properties={{
+                balloonContent: `<div class=${styles.balloonContent}>
                     <div class=${styles.title}>
                       ${item.name}
                       <div class=${styles.address}>${item.address}</div>
                     </div>
+                    <div class=${
+                      styles.availableCars
+                    }>Доступные автомобили: ${availableCars.join(", ")}</div>
                   </div>`,
-            }}
-          />
-        ))
+              }}
+            />
+          );
+        })
       ),
-    [cities, handleBalloonClick]
+    [cars, cities, handleBalloonClick]
   );
 
   useEffect(() => {
-    handleBalloonClick(locationCoordinates, locationAddress, totalCity);
-  }, [totalCity, handleBalloonClick, locationAddress, locationCoordinates]);
+    changeCoordinates(locationCoordinates);
+  }, [changeCoordinates, locationCoordinates]);
 
   return (
     <YMaps query={{ apikey: config.YANDEX_API_KEY }}>
