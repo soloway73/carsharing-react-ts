@@ -4,12 +4,12 @@ import { useDispatch, useSelector } from "react-redux";
 import config from "../../config/config.json";
 //import { Location } from "../../interfaces/location.interface";
 import { AppDispatch, RootState } from "../../store/store";
-import styles from "./MapArea.module.css";
 import { totalActions } from "../../store/total.slice";
+import styles from "./MapArea.module.css";
 
 export function MapArea() {
   // const cars = useSelector((s: RootState) => s.cities).cars;
-  const cities = useSelector((s: RootState) => s.cities).cities;
+  const { cities } = useSelector((s: RootState) => s.cities);
   const mapRef = useRef<ymaps.Map | null>(null);
   const dispatch = useDispatch<AppDispatch>();
 
@@ -17,15 +17,17 @@ export function MapArea() {
     (s: RootState) => s.total
   ).coordinates;
   const locationAddress = useSelector((s: RootState) => s.total).location;
+  const totalCity = useSelector((s: RootState) => s.total).city;
 
   const handleBalloonClick = useCallback(
-    (coords: number[], address: string) => {
+    (coords: number[], address: string, city: string) => {
       if (mapRef.current) {
         mapRef.current.panTo(coords, { duration: 1000 });
+        dispatch(totalActions.addCity(city));
         dispatch(totalActions.addLocation(address));
       }
     },
-    []
+    [cities, dispatch]
   );
   // const availableCars = (item: Location) =>
   //   cars
@@ -64,7 +66,8 @@ export function MapArea() {
             onClick={() =>
               handleBalloonClick(
                 [item.coordinates.lat, item.coordinates.lng],
-                item.address
+                item.address,
+                city.name
               )
             }
             properties={{
@@ -82,8 +85,8 @@ export function MapArea() {
   );
 
   useEffect(() => {
-    handleBalloonClick(locationCoordinates, locationAddress);
-  }, [handleBalloonClick, locationAddress, locationCoordinates]);
+    handleBalloonClick(locationCoordinates, locationAddress, totalCity);
+  }, [totalCity, handleBalloonClick, locationAddress, locationCoordinates]);
 
   return (
     <YMaps query={{ apikey: config.YANDEX_API_KEY }}>
