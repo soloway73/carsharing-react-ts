@@ -12,6 +12,7 @@ import "./index.css";
 import { store } from "./store/store.ts";
 import { Order } from "./components/Pages/Order/Order.tsx";
 import { Location } from "./components/Pages/Order/Location/Location.tsx";
+import { Model } from "./components/Pages/Order/Model/Model.tsx";
 
 const router = createBrowserRouter([
   {
@@ -37,7 +38,7 @@ const router = createBrowserRouter([
           },
           {
             path: "model",
-            element: <div>model</div>,
+            element: <Model />,
           },
           {
             path: "options",

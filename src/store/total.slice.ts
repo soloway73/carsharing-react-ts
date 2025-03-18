@@ -34,20 +34,10 @@ export const totalSlice = createSlice({
   name: "total",
   initialState,
   reducers: {
-    clearAll: (state) => {
-      state.city = "";
-      state.location = "";
-      state.name = "";
-      state.coordinates = [54.32097709395514, 48.389156047245756];
-      state.model = "";
-      state.color = "";
-      state.rentalDuration = 0;
-      state.tankful = false;
-      state.babySeat = false;
-      state.rightHandDrive = false;
-      state.tariff = "";
-      state.total = 0;
+    clearAll: () => {
+      return initialState;
     },
+
     addCity: (state, action: PayloadAction<string>) => {
       state.city = action.payload;
     },
