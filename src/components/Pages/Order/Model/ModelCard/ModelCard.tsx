@@ -12,7 +12,7 @@ export function ModelCard({ title, price, image }: ModelCardProps) {
       <div className={styles.price}>{price} ₽</div>
       <img
         className={styles.image}
-        src={`../../../../assets/car1.png`}
+        src={`/src/assets/${image}`}
         alt="изображение автомобиля"
       />
     </div>
