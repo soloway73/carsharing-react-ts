@@ -34,24 +34,6 @@ export function MapArea() {
       mapRef.current.panTo(coords, { duration: 1000 });
     }
   }, []);
-  // const availableCars = (item: Location) =>
-  //   cars
-  //     .filter((car) => car.locationId === item.id)
-  //     .map((car) => <div>{car.model}</div>);
-
-  // const balloonLayout = (item: Location) => {
-  //   return (
-  // <>
-  //   <div className={styles.balloonContent}>
-  //     <div className={styles.title}>
-  //       {item.name}
-  //       <div className={styles.address}>{item.address}</div>
-  //     </div>
-  //     <div className={styles.availableCars}>{availableCars}</div>
-  //   </div>
-  // </>
-  //   );
-  // };
 
   const placemarks = useMemo(
     () =>

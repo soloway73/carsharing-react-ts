@@ -4,7 +4,7 @@ import styles from "./Input.module.css";
 export interface InputProps {
   label: string;
   filteredValues?: string[];
-  onItemClick?: (e: React.MouseEvent) => void;
+  onItemClick: (item: string) => void;
   onClear?: () => void;
 }
 
@@ -23,7 +23,11 @@ export function Input({
   const items = useMemo(
     () =>
       filteredValues.map((item, index) => (
-        <div className={styles.menuItem} key={index} onClick={onItemClick}>
+        <div
+          className={styles.menuItem}
+          key={index}
+          onClick={() => onItemClick(item)}
+        >
           {item}
         </div>
       )),
