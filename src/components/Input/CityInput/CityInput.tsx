@@ -12,6 +12,7 @@ export function CityInput() {
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setInputValue(e.target.value);
     dispatch(totalActions.addCity(""));
+    dispatch(totalActions.addLocation(""));
   };
   const handleClear = () => {
     setInputValue("");
