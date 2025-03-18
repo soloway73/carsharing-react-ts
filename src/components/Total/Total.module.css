@@ -10,14 +10,6 @@
   gap: 32px;
 }
 
-.total > *:last-child {
-  background: var(--gray-light);
-  border-radius: 8px;
-  color: #ffffff;
-  font-weight: 500;
-  font-size: 18px;
-}
-
 .title {
   color: var(--black);
   font-weight: 500;

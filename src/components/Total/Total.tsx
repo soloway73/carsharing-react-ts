@@ -1,8 +1,8 @@
 import { useSelector } from "react-redux";
-import { Button } from "../Button/Button";
 import styles from "./Total.module.css";
 import { TotalLine } from "./TotalLine/TotalLine";
 import { RootState } from "../../store/store";
+import { NextStepButton } from "../NextStepButton/NextStepButton";
 
 export function Total() {
   const totalSlice = useSelector((s: RootState) => s.total);
@@ -17,9 +17,9 @@ export function Total() {
         />
       )}
       <div className={styles.totalPrice}>
-        <span className={styles.bold}>Цена:</span> от 8 000 до 12 000 ₽
+        <span className={styles.bold}>Цена:</span> от {totalSlice.total} ₽
       </div>
-      <Button>Выбрать модель</Button>
+      <NextStepButton />
     </div>
   );
 }

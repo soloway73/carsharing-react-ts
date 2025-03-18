@@ -14,6 +14,7 @@ export function Location() {
   const totalSlice = useSelector((s: RootState) => s.total);
 
   useEffect(() => {
+    dispatch(totalActions.clearAll());
     dispatch(getCities());
     dispatch(getCars());
   }, [dispatch]);

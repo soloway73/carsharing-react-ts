@@ -3,10 +3,16 @@ import { Button } from "../../Button/Button";
 import { Heading } from "../../Heading/Heading";
 import styles from "./MainPage.module.css";
 import { Footer } from "../../Footer/Footer";
+import { useEffect } from "react";
+import { totalActions } from "../../../store/total.slice";
 
 export function MainPage() {
   const navigate = useNavigate();
   const toOrder = () => navigate("/order");
+
+  useEffect(() => {
+    totalActions.clearAll();
+  }, []);
 
   return (
     <>
