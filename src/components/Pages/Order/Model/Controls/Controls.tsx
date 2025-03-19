@@ -1,10 +1,11 @@
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import styles from "./Controls.module.css";
-import { AppDispatch } from "../../../../../store/store";
+import { AppDispatch, RootState } from "../../../../../store/store";
 import { totalActions } from "../../../../../store/total.slice";
 
 export function Controls() {
   const dispatch = useDispatch<AppDispatch>();
+  const totalSlice = useSelector((s: RootState) => s.total);
 
   const allModelsCheckHandler = () => {
     dispatch(totalActions.changeTrim("all"));
@@ -23,6 +24,7 @@ export function Controls() {
           name="carBudget"
           id="allModels"
           onChange={allModelsCheckHandler}
+          checked={totalSlice.trim === "all" ? true : false}
         />
         <label htmlFor="allModels">Все модели</label>
       </div>

@@ -8,11 +8,16 @@
   gap: 4px;
 }
 
+label {
+  cursor: url("/pointer.svg"), pointer;
+}
+
 .input label {
   font-weight: 300;
   font-size: 14px;
   color: var(--gray);
 }
+
 .input input:checked + label {
   font-weight: 300;
   font-size: 14px;
