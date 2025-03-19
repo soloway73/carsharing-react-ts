@@ -1,0 +1,20 @@
+.controls {
+  display: flex;
+  gap: 16px;
+}
+
+.input {
+  display: flex;
+  gap: 4px;
+}
+
+.input label {
+  font-weight: 300;
+  font-size: 14px;
+  color: var(--gray);
+}
+.input input:checked + label {
+  font-weight: 300;
+  font-size: 14px;
+  color: var(--black);
+}

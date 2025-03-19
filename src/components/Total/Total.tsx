@@ -16,6 +16,9 @@ export function Total() {
           value={totalSlice.city + ", " + totalSlice.location}
         />
       )}
+      {totalSlice.model && (
+        <TotalLine title={"Модель"} value={totalSlice.model} />
+      )}
       <div className={styles.totalPrice}>
         <span className={styles.bold}>Цена:</span> от {totalSlice.total} ₽
       </div>

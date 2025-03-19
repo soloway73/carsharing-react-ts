@@ -34,3 +34,35 @@ h1 {
   font-size: 3.2em;
   line-height: 1.1;
 }
+
+input[type="radio"] {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+
+  width: 12px;
+  height: 12px;
+  border: 1px solid #ccc;
+  border-radius: 50%;
+  outline: none;
+  cursor: pointer;
+}
+
+input[type="radio"]:hover {
+  border-color: #666;
+}
+
+input[type="radio"]:checked {
+  background-color: var(--main-accent);
+  border-color: var(--main-accent);
+  border: 3px solid var(--main-accent);
+}
+
+input[type="radio"]:checked::after {
+  content: "";
+  display: block;
+  width: 6px;
+  height: 6px;
+  background-color: white;
+  border-radius: 50%;
+}

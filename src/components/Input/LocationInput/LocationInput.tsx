@@ -45,6 +45,10 @@ export function LocationInput() {
     }
   }, [totalSlice.city]);
 
+  useEffect(() => {
+    setInputValue(totalSlice.location);
+  }, [totalSlice.location]);
+
   return (
     <Input
       placeholder="Введите адрес"

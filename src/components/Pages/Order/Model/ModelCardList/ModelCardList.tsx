@@ -9,18 +9,15 @@ export function ModelCardList() {
   const { cars } = cities;
 
   const filteredCars = cars.filter(
-    (car) => car.locationId === totalSlice.locationId
+    (car) =>
+      car.locationId === totalSlice.locationId &&
+      (car.trim === totalSlice.trim || totalSlice.trim === "all")
   );
 
   return (
     <div className={styles.list}>
       {filteredCars.map((car) => (
-        <ModelCard
-          key={car.id}
-          title={car.model}
-          price={car.pricePerDay}
-          image={car.imageURL}
-        />
+        <ModelCard car={car} key={car.id} />
       ))}
     </div>
   );

@@ -24,4 +24,5 @@ export interface CarsResponse {
   cityId: number;
   locationId: number;
   imageURL: string;
+  trim: "eco" | "premium";
 }
