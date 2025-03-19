@@ -1,10 +1,10 @@
 import { useSelector } from "react-redux";
-import styles from "./Options.module.css";
+import styles from "./Summary.module.css";
 import { RootState } from "../../../../store/store";
 import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 
-export function Options() {
+export function Summary() {
   const { location, carId } = useSelector((s: RootState) => s.total);
   const navigate = useNavigate();
 
@@ -14,5 +14,5 @@ export function Options() {
     }
   }, [carId, location, navigate]);
 
-  return <div className={styles.options}>options</div>;
+  return <div className={styles.summary}>summary</div>;
 }
