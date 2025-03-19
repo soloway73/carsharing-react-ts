@@ -58,7 +58,6 @@ export function LocationInput() {
       value={inputValue}
       filteredValues={filteredLocations}
       onClear={handleClear}
-      // onChange={handleChange}
       onInput={handleChange}
       onItemClick={handleItemClick}
     />

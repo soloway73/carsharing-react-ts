@@ -2,11 +2,12 @@ import { useDispatch, useSelector } from "react-redux";
 import { Input } from "../Input";
 import { AppDispatch, RootState } from "../../../store/store";
 import { totalActions } from "../../../store/total.slice";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 export function CityInput() {
   const dispatch = useDispatch<AppDispatch>();
   const citiesSlice = useSelector((s: RootState) => s.cities);
+  const totalSlice = useSelector((s: RootState) => s.total);
   const [inputValue, setInputValue] = useState("");
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -22,11 +23,14 @@ export function CityInput() {
     dispatch(totalActions.addLocationId(0));
   };
   const handleItemClick = (item: string) => {
-    // setInputValue(e.currentTarget.textContent as string);
-    // dispatch(totalActions.addCity(e.currentTarget.textContent as string));
     setInputValue(item);
     dispatch(totalActions.addCity(item));
   };
+
+  useEffect(() => {
+    setInputValue(totalSlice.city);
+  }, [totalSlice.city]);
+
   const filteredCities = citiesSlice.cities
     .map((item) => item.name)
     .filter((item) => item.toLowerCase().includes(inputValue.toLowerCase()));
@@ -40,7 +44,6 @@ export function CityInput() {
       filteredValues={filteredCities}
       onClear={handleClear}
       onInput={handleChange}
-      // onChange={handleChange}
       onItemClick={handleItemClick}
     />
   );
