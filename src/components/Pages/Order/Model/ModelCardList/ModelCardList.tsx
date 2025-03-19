@@ -1,6 +1,6 @@
 import { RootState } from "../../../../../store/store";
 import { ModelCard } from "../ModelCard/ModelCard";
-import styles from "./Model.module.css";
+import styles from "./ModelCardList.module.css";
 import { useSelector } from "react-redux";
 
 export function ModelCardList() {
