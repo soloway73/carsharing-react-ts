@@ -1,11 +1,12 @@
-import { ModelCard } from "./ModelCard/ModelCard";
+import { Controls } from "./Controls/Controls";
 import styles from "./Model.module.css";
+import { ModelCardList } from "./ModelCardList/ModelCardList";
 
 export function Model() {
   return (
     <div className={styles.model}>
-      test
-      <ModelCard title="Toyota Camry" price={10000} image="car1.png" />
+      <Controls />
+      <ModelCardList />
     </div>
   );
 }

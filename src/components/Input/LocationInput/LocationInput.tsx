@@ -14,16 +14,24 @@ export function LocationInput() {
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setInputValue(e.target.value);
     dispatch(totalActions.addLocation(""));
+    dispatch(totalActions.addLocationId(0));
   };
   const handleClear = () => {
     setInputValue("");
     dispatch(totalActions.addLocation(""));
+    dispatch(totalActions.addLocationId(0));
   };
   const handleItemClick = (item: string) => {
-    // setInputValue(e.currentTarget.textContent as string);
-    // dispatch(totalActions.addLocation(e.currentTarget.textContent as string));
     setInputValue(item);
     dispatch(totalActions.addLocation(item));
+    dispatch(
+      totalActions.addLocationId(
+        citiesSlice.cities
+          .find((item) => item.name === totalSlice.city)
+          ?.locations.find((location) => location.address === item)
+          ?.id as number
+      )
+    );
   };
 
   const filteredLocations = citiesSlice.cities

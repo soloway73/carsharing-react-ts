@@ -13,11 +13,13 @@ export function CityInput() {
     setInputValue(e.target.value);
     dispatch(totalActions.addCity(""));
     dispatch(totalActions.addLocation(""));
+    dispatch(totalActions.addLocationId(0));
   };
   const handleClear = () => {
     setInputValue("");
     dispatch(totalActions.addCity(""));
     dispatch(totalActions.addLocation(""));
+    dispatch(totalActions.addLocationId(0));
   };
   const handleItemClick = (item: string) => {
     // setInputValue(e.currentTarget.textContent as string);

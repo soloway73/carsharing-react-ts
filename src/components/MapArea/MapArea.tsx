@@ -19,11 +19,12 @@ export function MapArea() {
   ).coordinates;
 
   const handleBalloonClick = useCallback(
-    (coords: number[], address: string, city: string) => {
+    (coords: number[], address: string, id: number, city: string) => {
       if (mapRef.current) {
         mapRef.current.panTo(coords, { duration: 1000 });
         dispatch(totalActions.addCity(city));
         dispatch(totalActions.addLocation(address));
+        dispatch(totalActions.addLocationId(id));
       }
     },
     [dispatch]
@@ -60,6 +61,7 @@ export function MapArea() {
                 handleBalloonClick(
                   [item.coordinates.lat, item.coordinates.lng],
                   item.address,
+                  item.id,
                   city.name
                 )
               }
