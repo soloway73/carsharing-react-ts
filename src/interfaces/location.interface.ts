@@ -18,7 +18,7 @@ export interface CarsResponse {
   id: number;
   model: string;
   year: number;
-  color: string;
+  color: string[];
   pricePerDay: number;
   available: boolean;
   cityId: number;

@@ -25,7 +25,7 @@ const initialState: ITotalState = {
   coordinates: [54.32097709395514, 48.389156047245756],
   model: "",
   carId: 0,
-  color: "",
+  color: "Любой",
   rentalDuration: 0,
   tankful: false,
   babySeat: false,
@@ -58,7 +58,6 @@ export const totalSlice = createSlice({
     addModel: (state, action: PayloadAction<CarsResponse>) => {
       state.model = action.payload.model;
       state.total = action.payload.pricePerDay;
-      state.color = action.payload.color;
       state.carId = action.payload.id;
     },
     addColor: (state, action: PayloadAction<string>) => {

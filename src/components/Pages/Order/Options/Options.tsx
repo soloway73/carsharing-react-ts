@@ -3,6 +3,7 @@ import styles from "./Options.module.css";
 import { RootState } from "../../../../store/store";
 import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
+import { ColorInputs } from "./ColorInputs/ColorInputs";
 
 export function Options() {
   const { location, carId } = useSelector((s: RootState) => s.total);
@@ -14,5 +15,9 @@ export function Options() {
     }
   }, [carId, location, navigate]);
 
-  return <div className={styles.options}>options</div>;
+  return (
+    <div className={styles.options}>
+      <ColorInputs />
+    </div>
+  );
 }
