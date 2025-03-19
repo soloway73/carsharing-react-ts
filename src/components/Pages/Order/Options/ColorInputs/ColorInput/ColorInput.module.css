@@ -1,0 +1,13 @@
+.input {
+  margin-right: 5px;
+}
+
+label {
+  font-weight: 300;
+  font-size: 14px;
+  color: var(--gray);
+}
+
+label:has(input:checked) {
+  color: var(--black);
+}

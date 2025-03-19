@@ -13,7 +13,7 @@ export interface ITotalState {
   tankful: boolean;
   babySeat: boolean;
   rightHandDrive: boolean;
-  tariff: string;
+  tariff: "На сутки" | "Поминутно";
   total: number;
   trim: "eco" | "premium" | "all";
 }
@@ -30,7 +30,7 @@ const initialState: ITotalState = {
   tankful: false,
   babySeat: false,
   rightHandDrive: false,
-  tariff: "",
+  tariff: "На сутки",
   total: 0,
   trim: "all",
 };
@@ -84,7 +84,7 @@ export const totalSlice = createSlice({
     removeRightHandDrive: (state) => {
       state.rightHandDrive = false;
     },
-    addTariff: (state, action: PayloadAction<string>) => {
+    addTariff: (state, action: PayloadAction<"На сутки" | "Поминутно">) => {
       state.tariff = action.payload;
     },
     changeTrim: (state, action: PayloadAction<"eco" | "premium" | "all">) => {

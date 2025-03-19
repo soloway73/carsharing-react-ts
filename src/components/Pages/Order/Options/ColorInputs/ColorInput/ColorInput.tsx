@@ -1,30 +1,33 @@
-import { useDispatch } from "react-redux";
-import { AppDispatch } from "../../../../../../store/store";
+import { useDispatch, useSelector } from "react-redux";
+import { AppDispatch, RootState } from "../../../../../../store/store";
 import { totalActions } from "../../../../../../store/total.slice";
 import styles from "./ColorInput.module.css";
 
 interface ColorInputProps {
   color: string;
-  key?: number;
 }
-export function ColorInput({ color, key }: ColorInputProps) {
+export function ColorInput({ color }: ColorInputProps) {
   const dispatch = useDispatch<AppDispatch>();
+  const totalSlice = useSelector((s: RootState) => s.total);
 
   const colorCheckHandler = () => {
     dispatch(totalActions.addColor(color));
   };
 
+  const checkedHandler = () => {
+    return color === totalSlice.color ? true : false;
+  };
+
   return (
-    <div className={styles.colorInput} key={key}>
-      <label>
-        <input
-          type="radio"
-          name="carColor"
-          id="white"
-          onChange={colorCheckHandler}
-        />
-        {color}
-      </label>
-    </div>
+    <label className={styles.label}>
+      <input
+        className={styles.input}
+        type="radio"
+        name="carColor"
+        onChange={colorCheckHandler}
+        checked={checkedHandler()}
+      />
+      {color}
+    </label>
   );
 }

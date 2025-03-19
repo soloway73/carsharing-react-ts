@@ -8,11 +8,18 @@ export function ColorInputs() {
   const currentCar = cars.find((car) => car.id === carId);
 
   return (
-    <div className={styles.colorInputs}>
-      <ColorInput color={"Любой"} />
-      {currentCar?.color.map((color, index) => {
-        return <ColorInput color={color} key={index} />;
-      })}
+    <div className={styles.colorInputsWrapper}>
+      Цвет
+      <div className={styles.colorInputs}>
+        <ColorInput color={"Любой"} />
+        {currentCar?.color.map((color, index) => {
+          return (
+            <div key={index}>
+              <ColorInput color={color} />
+            </div>
+          );
+        })}
+      </div>
     </div>
   );
 }

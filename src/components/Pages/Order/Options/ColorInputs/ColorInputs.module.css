@@ -1,0 +1,11 @@
+.colorInputs {
+  display: flex;
+  gap: 16px;
+  margin: 16px 0;
+}
+
+.colorInputsWrapper {
+  font-weight: 300;
+  font-size: 14px;
+  color: var(--black);
+}
