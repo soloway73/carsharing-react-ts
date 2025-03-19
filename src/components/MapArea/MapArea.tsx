@@ -6,7 +6,7 @@ import config from "../../config/config.json";
 import { AppDispatch, RootState } from "../../store/store";
 import { totalActions } from "../../store/total.slice";
 import styles from "./MapArea.module.css";
-import circleSVG from "../../assets/circle.svg";
+import сircleSVG from "../../assets/сircle.svg";
 
 export function MapArea() {
   const { cities } = useSelector((s: RootState) => s.cities);
@@ -50,7 +50,7 @@ export function MapArea() {
               geometry={[item.coordinates.lat, item.coordinates.lng]}
               options={{
                 iconLayout: "default#image",
-                iconImageHref: circleSVG,
+                iconImageHref: сircleSVG,
                 iconImageSize: [30, 30],
                 iconImageOffset: [-15, -30],
                 balloonPane: "outerBalloon",

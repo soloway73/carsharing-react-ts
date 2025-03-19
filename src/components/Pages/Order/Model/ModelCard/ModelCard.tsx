@@ -10,11 +10,7 @@ export function ModelCard({ title, price, image }: ModelCardProps) {
     <div className={styles.modelCard}>
       <div className={styles.title}>{title}</div>
       <div className={styles.price}>{price} ₽</div>
-      <img
-        className={styles.image}
-        src={`/src/assets/${image}`}
-        alt="изображение автомобиля"
-      />
+      <img src={`/${image}`} alt="car" />
     </div>
   );
 }

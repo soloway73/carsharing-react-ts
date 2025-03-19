@@ -6,7 +6,6 @@ export function Model() {
     <div className={styles.model}>
       test
       <ModelCard title="Toyota Camry" price={10000} image="car1.png" />
-      <img src={"../../../../../assets/car1.png"} alt="213" />
     </div>
   );
 }
