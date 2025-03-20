@@ -6,6 +6,7 @@ import { useEffect } from "react";
 import { ColorInputs } from "./ColorInputs/ColorInputs";
 import { DateInputs } from "./DateInputs/DateInputs";
 import { Tariff } from "./Tariff/Tariff";
+import { ExtraOptions } from "./ExtraOptions/ExtraOptions";
 
 export function Options() {
   const { location, carId } = useSelector((s: RootState) => s.total);
@@ -22,6 +23,7 @@ export function Options() {
       <ColorInputs />
       <DateInputs />
       <Tariff />
+      <ExtraOptions />
     </div>
   );
 }
