@@ -1,5 +1,6 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { CarsResponse } from "../interfaces/location.interface";
+import { formatTimeDifference, IRentalDuration } from "./dateFunctions";
 
 export interface ITotalState {
   city: string;
@@ -9,7 +10,9 @@ export interface ITotalState {
   model: string;
   carId: number;
   color: string;
-  rentalDuration: number;
+  startDate: string | null;
+  endDate: string | null;
+  rentalDuration: IRentalDuration | undefined;
   tankful: boolean;
   babySeat: boolean;
   rightHandDrive: boolean;
@@ -26,7 +29,9 @@ const initialState: ITotalState = {
   model: "",
   carId: 0,
   color: "Любой",
-  rentalDuration: 0,
+  startDate: null,
+  endDate: null,
+  rentalDuration: undefined,
   tankful: false,
   babySeat: false,
   rightHandDrive: false,
@@ -63,32 +68,38 @@ export const totalSlice = createSlice({
     addColor: (state, action: PayloadAction<string>) => {
       state.color = action.payload;
     },
-    addRentalDuration: (state, action: PayloadAction<number>) => {
-      state.rentalDuration = action.payload;
+    addStartDate: (state, action: PayloadAction<string | null>) => {
+      state.startDate = action.payload;
     },
-    addTankful: (state) => {
-      state.tankful = true;
+    addEndDate: (state, action: PayloadAction<string | null>) => {
+      state.endDate = action.payload;
     },
-    removeTankful: (state) => {
-      state.tankful = false;
+    addRentalDuration: (state) => {
+      if (state.startDate && state.endDate) {
+        state.rentalDuration = formatTimeDifference(
+          state.startDate,
+          state.endDate
+        );
+      }
     },
-    addBabySeat: (state) => {
-      state.babySeat = true;
+    handleTankful: (state, action: PayloadAction<boolean>) => {
+      state.tankful = action.payload;
     },
-    removeBabySeat: (state) => {
-      state.babySeat = false;
+
+    handleBabySeat: (state, action: PayloadAction<boolean>) => {
+      state.babySeat = action.payload;
     },
-    addRightHandDrive: (state) => {
-      state.rightHandDrive = true;
-    },
-    removeRightHandDrive: (state) => {
-      state.rightHandDrive = false;
+    handleRightHandDrive: (state, action: PayloadAction<boolean>) => {
+      state.rightHandDrive = action.payload;
     },
     addTariff: (state, action: PayloadAction<"На сутки" | "Поминутно">) => {
       state.tariff = action.payload;
     },
     changeTrim: (state, action: PayloadAction<"eco" | "premium" | "all">) => {
       state.trim = action.payload;
+    },
+    increaseTotal: (state, action: PayloadAction<number>) => {
+      state.total = state.total + action.payload;
     },
   },
 });
