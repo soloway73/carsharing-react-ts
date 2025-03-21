@@ -1,5 +1,6 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { CarsResponse } from "../interfaces/location.interface";
+import { formatTimeDifference, IRentalDuration } from "./dateFunctions";
 
 export interface ITotalState {
   city: string;
@@ -9,9 +10,9 @@ export interface ITotalState {
   model: string;
   carId: number;
   color: string;
-  startDate: Date | null;
-  endDate: Date | null;
-  rentalDuration: number;
+  startDate: string | null;
+  endDate: string | null;
+  rentalDuration: IRentalDuration | undefined;
   tankful: boolean;
   babySeat: boolean;
   rightHandDrive: boolean;
@@ -30,7 +31,7 @@ const initialState: ITotalState = {
   color: "Любой",
   startDate: null,
   endDate: null,
-  rentalDuration: 0,
+  rentalDuration: undefined,
   tankful: false,
   babySeat: false,
   rightHandDrive: false,
@@ -67,19 +68,19 @@ export const totalSlice = createSlice({
     addColor: (state, action: PayloadAction<string>) => {
       state.color = action.payload;
     },
-    addStartDate: (state, action: PayloadAction<Date>) => {
+    addStartDate: (state, action: PayloadAction<string | null>) => {
       state.startDate = action.payload;
     },
-    addEndDate: (state, action: PayloadAction<Date>) => {
+    addEndDate: (state, action: PayloadAction<string | null>) => {
       state.endDate = action.payload;
     },
     addRentalDuration: (state) => {
       if (state.startDate && state.endDate) {
-        state.rentalDuration = Math.ceil(
-          state.endDate.getTime() - state.startDate.getTime()
+        state.rentalDuration = formatTimeDifference(
+          state.startDate,
+          state.endDate
         );
       }
-      console.log("state.rentalDuration :>> ", state.rentalDuration);
     },
     handleTankful: (state, action: PayloadAction<boolean>) => {
       state.tankful = action.payload;
@@ -96,6 +97,9 @@ export const totalSlice = createSlice({
     },
     changeTrim: (state, action: PayloadAction<"eco" | "premium" | "all">) => {
       state.trim = action.payload;
+    },
+    increaseTotal: (state, action: PayloadAction<number>) => {
+      state.total = state.total + action.payload;
     },
   },
 });

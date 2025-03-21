@@ -25,11 +25,33 @@ export function Total() {
         <>
           <TotalLine title={"Цвет"} value={totalSlice.color} />
           <TotalLine title={"Тариф"} value={totalSlice.tariff} />
+          {totalSlice.rentalDuration && (
+            <TotalLine
+              title={"Длительность аренды"}
+              value={totalSlice.rentalDuration?.message}
+            />
+          )}
+          {totalSlice.tankful && (
+            <TotalLine title={"Полный бак"} value={"Да"} />
+          )}
+          {totalSlice.babySeat && (
+            <TotalLine title={"Детское кресло"} value={"Да"} />
+          )}
+          {totalSlice.rightHandDrive && (
+            <TotalLine title={"Правый руль"} value={"Да"} />
+          )}
         </>
       )}
-      <div className={styles.totalPrice}>
-        <span className={styles.bold}>Цена:</span> от {totalSlice.total} ₽
-      </div>
+      {pathname === "/order/model" && totalSlice.total > 0 && (
+        <div className={styles.totalPrice}>
+          <span className={styles.bold}>Цена:</span> от {totalSlice.total} ₽
+        </div>
+      )}
+      {(pathname === "/order/options" || pathname === "/order/summary") && (
+        <div className={styles.totalPrice}>
+          <span className={styles.bold}>Цена:</span> {totalSlice.total} ₽
+        </div>
+      )}
       <NextStepButton />
     </div>
   );
