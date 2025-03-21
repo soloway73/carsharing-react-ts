@@ -9,8 +9,8 @@ export interface ITotalState {
   model: string;
   carId: number;
   color: string;
-  startDate: string;
-  endDate: string;
+  startDate: Date | null;
+  endDate: Date | null;
   rentalDuration: number;
   tankful: boolean;
   babySeat: boolean;
@@ -28,8 +28,8 @@ const initialState: ITotalState = {
   model: "",
   carId: 0,
   color: "Любой",
-  startDate: "",
-  endDate: "",
+  startDate: null,
+  endDate: null,
   rentalDuration: 0,
   tankful: false,
   babySeat: false,
@@ -67,8 +67,19 @@ export const totalSlice = createSlice({
     addColor: (state, action: PayloadAction<string>) => {
       state.color = action.payload;
     },
-    addRentalDuration: (state, action: PayloadAction<number>) => {
-      state.rentalDuration = action.payload;
+    addStartDate: (state, action: PayloadAction<Date>) => {
+      state.startDate = action.payload;
+    },
+    addEndDate: (state, action: PayloadAction<Date>) => {
+      state.endDate = action.payload;
+    },
+    addRentalDuration: (state) => {
+      if (state.startDate && state.endDate) {
+        state.rentalDuration = Math.ceil(
+          state.endDate.getTime() - state.startDate.getTime()
+        );
+      }
+      console.log("state.rentalDuration :>> ", state.rentalDuration);
     },
     handleTankful: (state, action: PayloadAction<boolean>) => {
       state.tankful = action.payload;

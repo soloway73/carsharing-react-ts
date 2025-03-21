@@ -1,13 +1,14 @@
 import styles from "./DateInputs.module.css";
-//import { DateInput } from "./DatePicker/DateInput";
+import { EndDateInput } from "./DatePicker/EndDateInput";
+import { StartDateInput } from "./DatePicker/StartDateInput";
 
 export function DateInputs() {
-  //const today = new Date();
   return (
     <div className={styles.dateInputs}>
       Дата аренды
-      {/* <DateInput /> */}
-      <div className={styles.dateInputsWrapper}>
+      <StartDateInput />
+      <EndDateInput />
+      {/* <div className={styles.dateInputsWrapper}>
         <label htmlFor="startDate" className={styles.dateLabel}>
           С
         </label>
@@ -17,8 +18,8 @@ export function DateInputs() {
           name="startDate"
           min="2024-10-20T14:30"
         />
-      </div>
-      <div className={styles.dateInputsWrapper}>
+      </div> */}
+      {/* <div className={styles.dateInputsWrapper}>
         <label htmlFor="endDate" className={styles.dateLabel}>
           По
         </label>
@@ -27,7 +28,7 @@ export function DateInputs() {
           className={styles.dateInput}
           name="endDate"
         />
-      </div>
+      </div> */}
     </div>
   );
 }
