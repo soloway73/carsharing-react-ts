@@ -4,10 +4,26 @@ import { TotalLine } from "./TotalLine/TotalLine";
 import { RootState } from "../../store/store";
 import { NextStepButton } from "../NextStepButton/NextStepButton";
 import { useLocation } from "react-router-dom";
+import { useMemo } from "react";
 
 export function Total() {
   const totalSlice = useSelector((s: RootState) => s.total);
   const { pathname } = useLocation();
+
+  const totalScore = useMemo(() => {
+    let score = 0;
+    if (totalSlice.total) score += totalSlice.total;
+    if (totalSlice.rentalDuration) {
+      if (totalSlice.tariff === "На сутки")
+        score += totalSlice.rentalDuration.days * 1999;
+      if (totalSlice.tariff === "Поминутно")
+        score += totalSlice.rentalDuration.minutes * 7;
+    }
+    if (totalSlice.tankful) score += 500;
+    if (totalSlice.babySeat) score += 200;
+    if (totalSlice.rightHandDrive) score += 1600;
+    return score;
+  }, [totalSlice]);
 
   return (
     <div className={styles.total}>
@@ -49,7 +65,7 @@ export function Total() {
       )}
       {(pathname === "/order/options" || pathname === "/order/summary") && (
         <div className={styles.totalPrice}>
-          <span className={styles.bold}>Цена:</span> {totalSlice.total} ₽
+          <span className={styles.bold}>Цена:</span> {totalScore} ₽
         </div>
       )}
       <NextStepButton />

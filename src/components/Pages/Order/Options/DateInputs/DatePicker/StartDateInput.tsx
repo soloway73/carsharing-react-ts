@@ -21,24 +21,15 @@ export function StartDateInput() {
     if (date === null) {
       dispatch(totalActions.addStartDate(null));
       dispatch(totalActions.addEndDate(null));
+      dispatch(totalActions.addRentalDuration());
       return;
     }
     dispatch(totalActions.addStartDate(date.toISOString()));
-    const probablyEndDate = new Date(date.getTime() + 15 * 60 * 1000);
-    dispatch(totalActions.addEndDate(probablyEndDate.toISOString()));
-    dispatch(totalActions.addRentalDuration());
-    if (totalSlice.rentalDuration) {
-      if (totalSlice.tariff === "Поминутно") {
-        dispatch(
-          totalActions.increaseTotal(totalSlice.rentalDuration.minutes * 7)
-        );
-      }
-      if (totalSlice.tariff === "На сутки") {
-        dispatch(
-          totalActions.increaseTotal(totalSlice.rentalDuration.days * 1999)
-        );
-      }
+    if (totalSlice.endDate === null || date > new Date(totalSlice.endDate)) {
+      const probablyEndDate = new Date(date.getTime() + 15 * 60 * 1000);
+      dispatch(totalActions.addEndDate(probablyEndDate.toISOString()));
     }
+    dispatch(totalActions.addRentalDuration());
   };
 
   return (
@@ -53,7 +44,7 @@ export function StartDateInput() {
         timeFormat="HH:mm"
         timeIntervals={1}
         dateFormat="dd.MM.yyyy HH:mm"
-        timeCaption="time"
+        timeCaption="Время"
         minDate={new Date()}
         isClearable
         placeholderText="Ведите дату и время"
