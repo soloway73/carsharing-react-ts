@@ -75,6 +75,9 @@ export const totalSlice = createSlice({
       state.endDate = action.payload;
     },
     addRentalDuration: (state) => {
+      if (!state.startDate || !state.endDate) {
+        state.rentalDuration = undefined;
+      }
       if (state.startDate && state.endDate) {
         state.rentalDuration = formatTimeDifference(
           state.startDate,
@@ -100,6 +103,19 @@ export const totalSlice = createSlice({
     },
     increaseTotal: (state, action: PayloadAction<number>) => {
       state.total = state.total + action.payload;
+    },
+    resetTotal: (state, action: PayloadAction<number>) => {
+      state.total = action.payload;
+    },
+    resetOptions: (state) => {
+      state.tankful = false;
+      state.babySeat = false;
+      state.rightHandDrive = false;
+      state.tariff = "На сутки";
+      state.startDate = null;
+      state.endDate = null;
+      state.rentalDuration = undefined;
+      state.color = "Любой";
     },
   },
 });

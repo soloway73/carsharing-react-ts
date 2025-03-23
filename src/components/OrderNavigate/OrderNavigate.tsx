@@ -2,8 +2,12 @@ import { NavLink, useLocation } from "react-router-dom";
 import styles from "./OrderNavigate.module.css";
 import Arrow from "../../assets/Arrow.svg?react";
 import cn from "classnames";
+import { useDispatch } from "react-redux";
+import { AppDispatch } from "../../store/store";
+import { totalActions } from "../../store/total.slice";
 export function OrderNavigate() {
   const { pathname } = useLocation();
+  const dispatch = useDispatch<AppDispatch>();
   const isActiveModel =
     pathname === "/order/model" ||
     pathname === "/order/options" ||
@@ -11,6 +15,10 @@ export function OrderNavigate() {
   const isActiveOptions =
     pathname === "/order/options" || pathname === "/order/summary";
   const isActiveSummary = pathname === "/order/summary";
+
+  const onModelClick = () => {
+    dispatch(totalActions.resetOptions());
+  };
 
   return (
     <div className={styles.orderNavigate}>
@@ -24,6 +32,7 @@ export function OrderNavigate() {
         className={cn({ [styles.orderNavigateArrowActive]: isActiveModel })}
       />
       <NavLink
+        onClick={onModelClick}
         to="/order/model"
         className={cn(styles.orderNavigateItem, {
           [styles.orderNavigateItemActive]: isActiveModel,

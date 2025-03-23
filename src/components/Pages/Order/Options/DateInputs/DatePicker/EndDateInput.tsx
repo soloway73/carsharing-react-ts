@@ -14,27 +14,17 @@ export function EndDateInput() {
   const onChangeDateTo = (date: Date | null) => {
     if (!date) {
       dispatch(totalActions.addEndDate(null));
+      dispatch(totalActions.addRentalDuration());
       return;
     }
     if (totalSlice.startDate === null) return;
     if (date < new Date(totalSlice.startDate)) {
       dispatch(totalActions.addEndDate(totalSlice.startDate));
+      dispatch(totalActions.addRentalDuration());
       return;
     }
     dispatch(totalActions.addEndDate(date.toISOString()));
     dispatch(totalActions.addRentalDuration());
-    if (totalSlice.rentalDuration) {
-      if (totalSlice.tariff === "Поминутно") {
-        dispatch(
-          totalActions.increaseTotal(totalSlice.rentalDuration.minutes * 7)
-        );
-      }
-      if (totalSlice.tariff === "На сутки") {
-        dispatch(
-          totalActions.increaseTotal(totalSlice.rentalDuration.days * 1999)
-        );
-      }
-    }
   };
 
   const handleFilterStartPassedTime = (time: Date) => {
