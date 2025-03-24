@@ -10,7 +10,7 @@ export function ExtraOptions() {
     <div className={styles.extraOptions}>
       Доп услуги
       {totalSlice.options.map((option) => (
-        <OptionsCheckbox option={option} />
+        <OptionsCheckbox option={option} key={option.id} />
       ))}
     </div>
   );

@@ -13,7 +13,9 @@ export function Total() {
 
   const totalScore = useMemo(() => {
     let score = 0;
-    if (totalSlice.total) score += totalSlice.total;
+    if (totalSlice.total) {
+      score += totalSlice.total;
+    }
     if (totalSlice.startDate && totalSlice.endDate) {
       if (totalSlice.tariff === "На сутки")
         score +=
@@ -24,9 +26,9 @@ export function Total() {
           formatTimeDifference(totalSlice.startDate, totalSlice.endDate)
             .minutes * 7;
     }
-    if (totalSlice.tankful) score += 500;
-    if (totalSlice.babySeat) score += 200;
-    if (totalSlice.rightHandDrive) score += 1600;
+    totalSlice.options.forEach((option) => {
+      if (option.isChecked) score += option.price;
+    });
     return score;
   }, [totalSlice]);
 
@@ -64,15 +66,12 @@ export function Total() {
               value={rentalDurationMessage}
             />
           )}
-          {totalSlice.tankful && (
-            <TotalLine title={"Полный бак"} value={"Да"} />
-          )}
-          {totalSlice.babySeat && (
-            <TotalLine title={"Детское кресло"} value={"Да"} />
-          )}
-          {totalSlice.rightHandDrive && (
-            <TotalLine title={"Правый руль"} value={"Да"} />
-          )}
+          {totalSlice.options.map((option) => {
+            if (option.isChecked && option.name)
+              return (
+                <TotalLine title={option.name} value={"Да"} key={option.id} />
+              );
+          })}
         </>
       )}
       {pathname === "/order/model" && totalSlice.total > 0 && (
