@@ -7,6 +7,11 @@ import { useLocation } from "react-router-dom";
 import { useMemo } from "react";
 import { formatTimeDifference } from "../../store/dateFunctions";
 
+const PRICE = {
+  day: 1999,
+  minute: 7,
+};
+
 export function Total() {
   const totalSlice = useSelector((s: RootState) => s.total);
   const { pathname } = useLocation();
@@ -20,11 +25,11 @@ export function Total() {
       if (totalSlice.tariff === "На сутки")
         score +=
           formatTimeDifference(totalSlice.startDate, totalSlice.endDate).days *
-          1999;
+          PRICE.day;
       if (totalSlice.tariff === "Поминутно")
         score +=
           formatTimeDifference(totalSlice.startDate, totalSlice.endDate)
-            .minutes * 7;
+            .minutes * PRICE.minute;
     }
     totalSlice.options.forEach((option) => {
       if (option.isChecked) score += option.price;
