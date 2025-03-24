@@ -11,27 +11,16 @@ export function EndDateInput() {
   const totalSlice = useSelector((s: RootState) => s.total);
   const dispatch = useDispatch<AppDispatch>();
 
-  console.log("totalSlice.endDate :>> ", totalSlice.endDate);
   const onChangeDateTo = (date: Date | null) => {
-    console.log("date :>> ", date);
     if (!date) {
       dispatch(totalActions.addEndDate(null));
-      // dispatch(totalActions.addRentalDuration());
       return;
     }
     if (totalSlice.startDate && date.toISOString() < totalSlice.startDate) {
       dispatch(totalActions.addEndDate(totalSlice.startDate));
-      // dispatch(totalActions.addRentalDuration());
       return;
     }
-    // if (totalSlice.startDate === null) return;
-    // if (totalSlice.startDate && date < new Date(totalSlice.startDate)) {
-    //   dispatch(totalActions.addEndDate(totalSlice.startDate));
-    //   // dispatch(totalActions.addRentalDuration());
-    //   return;
-    // }
     dispatch(totalActions.addEndDate(date.toISOString()));
-    // dispatch(totalActions.addRentalDuration());
   };
 
   const handleFilterStartPassedTime = (time: Date) => {

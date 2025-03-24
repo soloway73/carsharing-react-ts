@@ -7,6 +7,7 @@ import { totalActions } from "../../../../../../store/total.slice";
 import styles from "./DateInput.module.css";
 
 registerLocale("ru", ru);
+
 export function StartDateInput() {
   const totalSlice = useSelector((s: RootState) => s.total);
   const dispatch = useDispatch<AppDispatch>();
@@ -20,6 +21,10 @@ export function StartDateInput() {
   const onChangeDateFrom = (date: Date | null) => {
     if (date === null) {
       dispatch(totalActions.addStartDate(null));
+      return;
+    }
+    if (date < new Date()) {
+      dispatch(totalActions.addStartDate(new Date().toISOString()));
       return;
     }
     dispatch(totalActions.addStartDate(date.toISOString()));

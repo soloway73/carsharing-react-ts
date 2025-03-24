@@ -15,10 +15,22 @@ export function Total() {
     let score = 0;
     if (totalSlice.total) score += totalSlice.total;
     if (totalSlice.rentalDuration) {
-      if (totalSlice.tariff === "На сутки")
-        score += totalSlice.rentalDuration.days * 1999;
-      if (totalSlice.tariff === "Поминутно")
-        score += totalSlice.rentalDuration.minutes * 7;
+      if (
+        totalSlice.tariff === "На сутки" &&
+        totalSlice.startDate &&
+        totalSlice.endDate
+      )
+        score +=
+          formatTimeDifference(totalSlice.startDate, totalSlice.endDate).days *
+          1999;
+      if (
+        totalSlice.tariff === "Поминутно" &&
+        totalSlice.startDate &&
+        totalSlice.endDate
+      )
+        score +=
+          formatTimeDifference(totalSlice.startDate, totalSlice.endDate)
+            .minutes * 7;
     }
     if (totalSlice.tankful) score += 500;
     if (totalSlice.babySeat) score += 200;
