@@ -14,7 +14,7 @@ interface IButtonState {
 
 export function NextStepButton() {
   const { pathname } = useLocation();
-  const { city, location, model, rentalDuration } = useSelector(
+  const { city, location, model, startDate, endDate } = useSelector(
     (s: RootState) => s.total
   );
   const navigate = useNavigate();
@@ -45,7 +45,7 @@ export function NextStepButton() {
       case "/order/options": {
         buttonState = {
           text: "Итого",
-          isActive: rentalDuration ? true : false,
+          isActive: startDate && endDate ? true : false,
           handler: () => navigate("/order/summary"),
         };
         break;
@@ -63,7 +63,7 @@ export function NextStepButton() {
         {buttonState.text}
       </Button>
     );
-  }, [pathname, city, location, navigate, model, rentalDuration]);
+  }, [pathname, city, location, navigate, model, startDate, endDate]);
 
   return buttonStateReducer;
 }
