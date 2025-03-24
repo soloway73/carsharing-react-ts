@@ -2,6 +2,14 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { CarsResponse } from "../interfaces/location.interface";
 import { formatTimeDifference, IRentalDuration } from "./dateFunctions";
 
+export interface IOption {
+  id: number;
+  name: string;
+  price: number;
+  isChecked: boolean;
+}
+
+type Options = IOption[];
 export interface ITotalState {
   city: string;
   location: string;
@@ -13,13 +21,17 @@ export interface ITotalState {
   startDate: string | null;
   endDate: string | null;
   rentalDuration: IRentalDuration | undefined;
-  tankful: boolean;
-  babySeat: boolean;
-  rightHandDrive: boolean;
+  options: Options;
   tariff: "На сутки" | "Поминутно";
   total: number;
   trim: "eco" | "premium" | "all";
 }
+
+const MOCK_USLUG: Options = [
+  { id: 1, name: "Полный бак", price: 500, isChecked: false },
+  { id: 2, name: "Детское кресло", price: 200, isChecked: false },
+  { id: 3, name: "Правый руль", price: 1600, isChecked: false },
+];
 
 const initialState: ITotalState = {
   city: "",
@@ -32,9 +44,7 @@ const initialState: ITotalState = {
   startDate: null,
   endDate: null,
   rentalDuration: undefined,
-  tankful: false,
-  babySeat: false,
-  rightHandDrive: false,
+  options: MOCK_USLUG,
   tariff: "На сутки",
   total: 0,
   trim: "all",
@@ -85,16 +95,6 @@ export const totalSlice = createSlice({
         );
       }
     },
-    handleTankful: (state, action: PayloadAction<boolean>) => {
-      state.tankful = action.payload;
-    },
-
-    handleBabySeat: (state, action: PayloadAction<boolean>) => {
-      state.babySeat = action.payload;
-    },
-    handleRightHandDrive: (state, action: PayloadAction<boolean>) => {
-      state.rightHandDrive = action.payload;
-    },
     addTariff: (state, action: PayloadAction<"На сутки" | "Поминутно">) => {
       state.tariff = action.payload;
     },
@@ -107,11 +107,14 @@ export const totalSlice = createSlice({
     resetTotal: (state, action: PayloadAction<number>) => {
       state.total = action.payload;
     },
+    toggleOption: (state, action: PayloadAction<number>) => {
+      state.options.map((option) => {
+        if (option.id === action.payload) option.isChecked = !option.isChecked;
+      });
+    },
     resetOptions: (state) => {
-      state.tankful = false;
-      state.babySeat = false;
-      state.rightHandDrive = false;
       state.tariff = "На сутки";
+      state.options.map((option) => (option.isChecked = false));
       state.startDate = null;
       state.endDate = null;
       state.rentalDuration = undefined;
