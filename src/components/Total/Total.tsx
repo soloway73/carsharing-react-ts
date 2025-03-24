@@ -5,6 +5,7 @@ import { RootState } from "../../store/store";
 import { NextStepButton } from "../NextStepButton/NextStepButton";
 import { useLocation } from "react-router-dom";
 import { useMemo } from "react";
+import { formatTimeDifference } from "../../store/dateFunctions";
 
 export function Total() {
   const totalSlice = useSelector((s: RootState) => s.total);
@@ -25,6 +26,18 @@ export function Total() {
     return score;
   }, [totalSlice]);
 
+  const rentalDurationMessage = useMemo(() => {
+    if (totalSlice.startDate && totalSlice.endDate) {
+      const { message } = formatTimeDifference(
+        totalSlice.startDate,
+        totalSlice.endDate
+      );
+      return message;
+    } else {
+      return "";
+    }
+  }, [totalSlice]);
+
   return (
     <div className={styles.total}>
       <div className={styles.title}>Ваш заказ:</div>
@@ -41,10 +54,10 @@ export function Total() {
         <>
           <TotalLine title={"Цвет"} value={totalSlice.color} />
           <TotalLine title={"Тариф"} value={totalSlice.tariff} />
-          {totalSlice.rentalDuration && (
+          {totalSlice.startDate && totalSlice.endDate && (
             <TotalLine
               title={"Длительность аренды"}
-              value={totalSlice.rentalDuration?.message}
+              value={rentalDurationMessage}
             />
           )}
           {totalSlice.tankful && (
