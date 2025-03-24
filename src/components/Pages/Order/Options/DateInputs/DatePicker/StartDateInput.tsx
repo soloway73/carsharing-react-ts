@@ -7,29 +7,27 @@ import { totalActions } from "../../../../../../store/total.slice";
 import styles from "./DateInput.module.css";
 
 registerLocale("ru", ru);
+
 export function StartDateInput() {
   const totalSlice = useSelector((s: RootState) => s.total);
   const dispatch = useDispatch<AppDispatch>();
 
   const handleFilterStartPassedTime = (time: Date) => {
     const currentDate = new Date();
-    // if (totalSlice.startDate === null) return true;
-    return time > currentDate;
+    if (totalSlice.endDate === null) return time > currentDate;
+    return time < new Date(totalSlice.endDate) && time > currentDate;
   };
 
   const onChangeDateFrom = (date: Date | null) => {
     if (date === null) {
       dispatch(totalActions.addStartDate(null));
-      dispatch(totalActions.addEndDate(null));
-      dispatch(totalActions.addRentalDuration());
+      return;
+    }
+    if (date < new Date()) {
+      dispatch(totalActions.addStartDate(new Date().toISOString()));
       return;
     }
     dispatch(totalActions.addStartDate(date.toISOString()));
-    if (totalSlice.endDate === null || date > new Date(totalSlice.endDate)) {
-      const probablyEndDate = new Date(date.getTime() + 15 * 60 * 1000);
-      dispatch(totalActions.addEndDate(probablyEndDate.toISOString()));
-    }
-    dispatch(totalActions.addRentalDuration());
   };
 
   return (
@@ -46,6 +44,7 @@ export function StartDateInput() {
         dateFormat="dd.MM.yyyy HH:mm"
         timeCaption="Время"
         minDate={new Date()}
+        maxDate={totalSlice.endDate ? new Date(totalSlice.endDate) : undefined}
         isClearable
         placeholderText="Ведите дату и время"
         className={styles.datePicker}

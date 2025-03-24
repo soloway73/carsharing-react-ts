@@ -5,6 +5,7 @@ import { RootState } from "../../store/store";
 import { NextStepButton } from "../NextStepButton/NextStepButton";
 import { useLocation } from "react-router-dom";
 import { useMemo } from "react";
+import { formatTimeDifference } from "../../store/dateFunctions";
 
 export function Total() {
   const totalSlice = useSelector((s: RootState) => s.total);
@@ -14,15 +15,39 @@ export function Total() {
     let score = 0;
     if (totalSlice.total) score += totalSlice.total;
     if (totalSlice.rentalDuration) {
-      if (totalSlice.tariff === "На сутки")
-        score += totalSlice.rentalDuration.days * 1999;
-      if (totalSlice.tariff === "Поминутно")
-        score += totalSlice.rentalDuration.minutes * 7;
+      if (
+        totalSlice.tariff === "На сутки" &&
+        totalSlice.startDate &&
+        totalSlice.endDate
+      )
+        score +=
+          formatTimeDifference(totalSlice.startDate, totalSlice.endDate).days *
+          1999;
+      if (
+        totalSlice.tariff === "Поминутно" &&
+        totalSlice.startDate &&
+        totalSlice.endDate
+      )
+        score +=
+          formatTimeDifference(totalSlice.startDate, totalSlice.endDate)
+            .minutes * 7;
     }
     if (totalSlice.tankful) score += 500;
     if (totalSlice.babySeat) score += 200;
     if (totalSlice.rightHandDrive) score += 1600;
     return score;
+  }, [totalSlice]);
+
+  const rentalDurationMessage = useMemo(() => {
+    if (totalSlice.startDate && totalSlice.endDate) {
+      const { message } = formatTimeDifference(
+        totalSlice.startDate,
+        totalSlice.endDate
+      );
+      return message;
+    } else {
+      return "";
+    }
   }, [totalSlice]);
 
   return (
@@ -41,10 +66,10 @@ export function Total() {
         <>
           <TotalLine title={"Цвет"} value={totalSlice.color} />
           <TotalLine title={"Тариф"} value={totalSlice.tariff} />
-          {totalSlice.rentalDuration && (
+          {totalSlice.startDate && totalSlice.endDate && (
             <TotalLine
               title={"Длительность аренды"}
-              value={totalSlice.rentalDuration?.message}
+              value={rentalDurationMessage}
             />
           )}
           {totalSlice.tankful && (
