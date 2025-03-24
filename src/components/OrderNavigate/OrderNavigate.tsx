@@ -24,18 +24,27 @@ export function OrderNavigate() {
     <div className={styles.orderNavigate}>
       <NavLink
         to="/order/location"
-        className={cn(styles.orderNavigateItem, styles.orderNavigateItemActive)}
+        className={cn(
+          styles.orderNavigateItem,
+          styles.orderNavigateItemActive,
+          {
+            [styles.currentPageLink]: pathname === "/order/location",
+          }
+        )}
       >
         Местоположение
       </NavLink>
       <Arrow
-        className={cn({ [styles.orderNavigateArrowActive]: isActiveModel })}
+        className={cn({
+          [styles.orderNavigateArrowActive]: isActiveModel,
+        })}
       />
       <NavLink
         onClick={onModelClick}
         to="/order/model"
         className={cn(styles.orderNavigateItem, {
           [styles.orderNavigateItemActive]: isActiveModel,
+          [styles.currentPageLink]: pathname === "/order/model",
         })}
       >
         Модель
@@ -47,6 +56,7 @@ export function OrderNavigate() {
         to="/order/options"
         className={cn(styles.orderNavigateItem, {
           [styles.orderNavigateItemActive]: isActiveOptions,
+          [styles.currentPageLink]: pathname === "/order/options",
         })}
       >
         Дополнительно
@@ -58,6 +68,7 @@ export function OrderNavigate() {
         to="/order/summary"
         className={cn(styles.orderNavigateItem, {
           [styles.orderNavigateItemActive]: isActiveSummary,
+          [styles.currentPageLink]: pathname === "/order/summary",
         })}
       >
         Итого
