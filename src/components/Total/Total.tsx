@@ -14,20 +14,12 @@ export function Total() {
   const totalScore = useMemo(() => {
     let score = 0;
     if (totalSlice.total) score += totalSlice.total;
-    if (totalSlice.rentalDuration) {
-      if (
-        totalSlice.tariff === "На сутки" &&
-        totalSlice.startDate &&
-        totalSlice.endDate
-      )
+    if (totalSlice.startDate && totalSlice.endDate) {
+      if (totalSlice.tariff === "На сутки")
         score +=
           formatTimeDifference(totalSlice.startDate, totalSlice.endDate).days *
           1999;
-      if (
-        totalSlice.tariff === "Поминутно" &&
-        totalSlice.startDate &&
-        totalSlice.endDate
-      )
+      if (totalSlice.tariff === "Поминутно")
         score +=
           formatTimeDifference(totalSlice.startDate, totalSlice.endDate)
             .minutes * 7;
