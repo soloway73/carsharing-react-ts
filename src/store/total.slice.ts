@@ -18,6 +18,7 @@ export interface ITotalState {
   model: string;
   carId: number;
   color: string;
+  imageURL: string;
   startDate: string | null;
   endDate: string | null;
   rentalDuration: IRentalDuration | undefined;
@@ -25,6 +26,7 @@ export interface ITotalState {
   tariff: "На сутки" | "Поминутно";
   total: number;
   trim: "eco" | "premium" | "all";
+  isPopUpActive: boolean;
 }
 
 const MOCK_USLUG: Options = [
@@ -41,6 +43,7 @@ const initialState: ITotalState = {
   model: "",
   carId: 0,
   color: "Любой",
+  imageURL: "",
   startDate: null,
   endDate: null,
   rentalDuration: undefined,
@@ -48,6 +51,7 @@ const initialState: ITotalState = {
   tariff: "На сутки",
   total: 0,
   trim: "all",
+  isPopUpActive: false,
 };
 
 export const totalSlice = createSlice({
@@ -57,7 +61,9 @@ export const totalSlice = createSlice({
     clearAll: () => {
       return initialState;
     },
-
+    setPopUpActive: (state, action: PayloadAction<boolean>) => {
+      state.isPopUpActive = action.payload;
+    },
     addCity: (state, action: PayloadAction<string>) => {
       state.city = action.payload;
     },
@@ -74,6 +80,7 @@ export const totalSlice = createSlice({
       state.model = action.payload.model;
       state.total = action.payload.pricePerDay;
       state.carId = action.payload.id;
+      state.imageURL = action.payload.imageURL;
     },
     addColor: (state, action: PayloadAction<string>) => {
       state.color = action.payload;
