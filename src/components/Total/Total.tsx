@@ -7,26 +7,33 @@ import { useLocation } from "react-router-dom";
 import { useMemo } from "react";
 import { formatTimeDifference } from "../../store/dateFunctions";
 
+const PRICE = {
+  day: 1999,
+  minute: 7,
+};
+
 export function Total() {
   const totalSlice = useSelector((s: RootState) => s.total);
   const { pathname } = useLocation();
 
   const totalScore = useMemo(() => {
     let score = 0;
-    if (totalSlice.total) score += totalSlice.total;
+    if (totalSlice.total) {
+      score += totalSlice.total;
+    }
     if (totalSlice.startDate && totalSlice.endDate) {
       if (totalSlice.tariff === "На сутки")
         score +=
           formatTimeDifference(totalSlice.startDate, totalSlice.endDate).days *
-          1999;
+          PRICE.day;
       if (totalSlice.tariff === "Поминутно")
         score +=
           formatTimeDifference(totalSlice.startDate, totalSlice.endDate)
-            .minutes * 7;
+            .minutes * PRICE.minute;
     }
-    if (totalSlice.tankful) score += 500;
-    if (totalSlice.babySeat) score += 200;
-    if (totalSlice.rightHandDrive) score += 1600;
+    totalSlice.options.forEach((option) => {
+      if (option.isChecked) score += option.price;
+    });
     return score;
   }, [totalSlice]);
 
@@ -54,7 +61,9 @@ export function Total() {
       {totalSlice.model && (
         <TotalLine title={"Модель"} value={totalSlice.model} />
       )}
-      {(pathname === "/order/options" || pathname === "/order/summary") && (
+      {(pathname === "/order/options" ||
+        pathname === "/order/summary" ||
+        pathname === "/order/summary/success") && (
         <>
           <TotalLine title={"Цвет"} value={totalSlice.color} />
           <TotalLine title={"Тариф"} value={totalSlice.tariff} />
@@ -64,15 +73,12 @@ export function Total() {
               value={rentalDurationMessage}
             />
           )}
-          {totalSlice.tankful && (
-            <TotalLine title={"Полный бак"} value={"Да"} />
-          )}
-          {totalSlice.babySeat && (
-            <TotalLine title={"Детское кресло"} value={"Да"} />
-          )}
-          {totalSlice.rightHandDrive && (
-            <TotalLine title={"Правый руль"} value={"Да"} />
-          )}
+          {totalSlice.options.map((option) => {
+            if (option.isChecked && option.name)
+              return (
+                <TotalLine title={option.name} value={"Да"} key={option.id} />
+              );
+          })}
         </>
       )}
       {pathname === "/order/model" && totalSlice.total > 0 && (
@@ -80,7 +86,9 @@ export function Total() {
           <span className={styles.bold}>Цена:</span> от {totalSlice.total} ₽
         </div>
       )}
-      {(pathname === "/order/options" || pathname === "/order/summary") && (
+      {(pathname === "/order/options" ||
+        pathname === "/order/summary" ||
+        pathname === "/order/summary/success") && (
         <div className={styles.totalPrice}>
           <span className={styles.bold}>Цена:</span> {totalScore} ₽
         </div>

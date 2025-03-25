@@ -13,9 +13,15 @@
   font-weight: 700;
   font-size: 14px;
   color: var(--gray);
+  pointer-events: none;
 }
 
 .orderNavigateItemActive {
+  color: var(--black);
+  pointer-events: all;
+}
+
+.currentPageLink {
   color: var(--main-accent);
 }
 
@@ -26,4 +32,10 @@
 
 .orderNavigateArrowActive path {
   fill: var(--main-accent);
+}
+
+.orderNum {
+  font-weight: 700;
+  font-size: 14px;
+  color: var(--black);
 }

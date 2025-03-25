@@ -1,10 +1,11 @@
-import styles from "./NextStepButton.module.css";
-import { useSelector } from "react-redux";
-import { useLocation, useNavigate } from "react-router-dom";
-import { RootState } from "../../store/store";
-import { useMemo } from "react";
-import { Button } from "../Button/Button";
 import cn from "classnames";
+import { useMemo } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { useLocation, useNavigate } from "react-router-dom";
+import { AppDispatch, RootState } from "../../store/store";
+import { totalActions } from "../../store/total.slice";
+import { Button } from "../Button/Button";
+import styles from "./NextStepButton.module.css";
 
 interface IButtonState {
   text: string;
@@ -18,6 +19,7 @@ export function NextStepButton() {
     (s: RootState) => s.total
   );
   const navigate = useNavigate();
+  const dispatch = useDispatch<AppDispatch>();
 
   const buttonStateReducer = useMemo(() => {
     let buttonState: IButtonState = {
@@ -50,20 +52,39 @@ export function NextStepButton() {
         };
         break;
       }
+      case "/order/summary": {
+        buttonState = {
+          text: "Заказать",
+          isActive: true,
+          handler: () => dispatch(totalActions.setPopUpActive(true)),
+        };
+        break;
+      }
+      case "/order/summary/success": {
+        buttonState = {
+          text: "Отменить",
+          isActive: true,
+          handler: () => navigate("/order/summary"),
+        };
+        break;
+      }
       default:
         break;
     }
 
     return (
       <Button
-        className={cn({ [styles.disabled]: !buttonState.isActive })}
+        className={cn({
+          [styles.disabled]: !buttonState.isActive,
+          [styles.redBtn]: pathname === "/order/summary/success",
+        })}
         onClick={() => buttonState.handler()}
         disabled={!buttonState.isActive}
       >
         {buttonState.text}
       </Button>
     );
-  }, [pathname, city, location, navigate, model, startDate, endDate]);
+  }, [pathname, city, location, navigate, model, startDate, endDate, dispatch]);
 
   return buttonStateReducer;
 }
