@@ -1,12 +1,10 @@
-import cn from "classnames";
 import { useEffect } from "react";
 import { useSelector } from "react-redux";
 import { useLocation, useNavigate } from "react-router-dom";
 import { RootState } from "../../../../store/store";
-import { Button } from "../../../Button/Button";
 import carList from "../Model/ModelCard/imageLinks";
-import styles from "./Summary.module.css";
 import { PopUp } from "./PopUp/PopUp";
+import styles from "./Summary.module.css";
 
 export function Summary() {
   const {
@@ -45,11 +43,15 @@ export function Summary() {
       <div className={styles.orderDetails}>
         <div className={styles.carModel}>{model}</div>
         <div className={styles.carPlate}>K 761 HA 73</div>
-        {options.find((option) => option.id === 1 && option.isChecked) && (
-          <div className={styles.fuelLevel}>
-            Топливо <span>100%</span>
-          </div>
-        )}
+        {options.map((option) => {
+          if (option.isChecked) {
+            return (
+              <div className={styles.fuelLevel} key={option.id}>
+                {option.name} <span>{option.message}</span>
+              </div>
+            );
+          }
+        })}
         <div className={styles.availability}>
           Доступна с <span>{availabilityDate()}</span>
         </div>

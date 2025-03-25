@@ -7,6 +7,7 @@ export interface IOption {
   name: string;
   price: number;
   isChecked: boolean;
+  message: string;
 }
 
 type Options = IOption[];
@@ -30,9 +31,15 @@ export interface ITotalState {
 }
 
 const MOCK_USLUG: Options = [
-  { id: 1, name: "Полный бак", price: 500, isChecked: false },
-  { id: 2, name: "Детское кресло", price: 200, isChecked: false },
-  { id: 3, name: "Правый руль", price: 1600, isChecked: false },
+  { id: 1, name: "Полный бак", price: 500, isChecked: false, message: "100%" },
+  {
+    id: 2,
+    name: "Детское кресло",
+    price: 200,
+    isChecked: false,
+    message: "Да",
+  },
+  { id: 3, name: "Правый руль", price: 1600, isChecked: false, message: "Да" },
 ];
 
 const initialState: ITotalState = {

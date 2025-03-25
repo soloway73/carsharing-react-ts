@@ -33,3 +33,9 @@
 .orderNavigateArrowActive path {
   fill: var(--main-accent);
 }
+
+.orderNum {
+  font-weight: 700;
+  font-size: 14px;
+  color: var(--black);
+}

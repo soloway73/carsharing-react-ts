@@ -5,3 +5,7 @@
   font-weight: 500;
   font-size: 18px;
 }
+
+.redBtn {
+  background: linear-gradient(90deg, #493013 0%, #7b0c3b 100%);
+}

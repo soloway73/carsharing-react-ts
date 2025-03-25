@@ -2,8 +2,8 @@ import { ButtonHTMLAttributes } from "react";
 import styles from "./Button.module.css";
 import cn from "classnames";
 
-interface ButtonProps {
-  children: React.ReactNode;
+export interface ButtonProps {
+  children?: React.ReactNode;
   className?: string;
   onClick?: () => void;
 }

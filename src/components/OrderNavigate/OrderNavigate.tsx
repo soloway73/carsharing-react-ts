@@ -22,57 +22,68 @@ export function OrderNavigate() {
 
   return (
     <div className={styles.orderNavigate}>
-      <NavLink
-        to="/order/location"
-        className={cn(
-          styles.orderNavigateItem,
-          styles.orderNavigateItemActive,
-          {
-            [styles.currentPageLink]: pathname === "/order/location",
-          }
-        )}
-      >
-        Местоположение
-      </NavLink>
-      <Arrow
-        className={cn({
-          [styles.orderNavigateArrowActive]: isActiveModel,
-        })}
-      />
-      <NavLink
-        onClick={onModelClick}
-        to="/order/model"
-        className={cn(styles.orderNavigateItem, {
-          [styles.orderNavigateItemActive]: isActiveModel,
-          [styles.currentPageLink]: pathname === "/order/model",
-        })}
-      >
-        Модель
-      </NavLink>
-      <Arrow
-        className={cn({ [styles.orderNavigateArrowActive]: isActiveOptions })}
-      />
-      <NavLink
-        to="/order/options"
-        className={cn(styles.orderNavigateItem, {
-          [styles.orderNavigateItemActive]: isActiveOptions,
-          [styles.currentPageLink]: pathname === "/order/options",
-        })}
-      >
-        Дополнительно
-      </NavLink>
-      <Arrow
-        className={cn({ [styles.orderNavigateArrowActive]: isActiveSummary })}
-      />
-      <NavLink
-        to="/order/summary"
-        className={cn(styles.orderNavigateItem, {
-          [styles.orderNavigateItemActive]: isActiveSummary,
-          [styles.currentPageLink]: pathname === "/order/summary",
-        })}
-      >
-        Итого
-      </NavLink>
+      {pathname !== "/order/summary/success" && (
+        <>
+          <NavLink
+            to="/order/location"
+            className={cn(
+              styles.orderNavigateItem,
+              styles.orderNavigateItemActive,
+              {
+                [styles.currentPageLink]: pathname === "/order/location",
+              }
+            )}
+          >
+            Местоположение
+          </NavLink>
+          <Arrow
+            className={cn({
+              [styles.orderNavigateArrowActive]: isActiveModel,
+            })}
+          />
+          <NavLink
+            onClick={onModelClick}
+            to="/order/model"
+            className={cn(styles.orderNavigateItem, {
+              [styles.orderNavigateItemActive]: isActiveModel,
+              [styles.currentPageLink]: pathname === "/order/model",
+            })}
+          >
+            Модель
+          </NavLink>
+          <Arrow
+            className={cn({
+              [styles.orderNavigateArrowActive]: isActiveOptions,
+            })}
+          />
+          <NavLink
+            to="/order/options"
+            className={cn(styles.orderNavigateItem, {
+              [styles.orderNavigateItemActive]: isActiveOptions,
+              [styles.currentPageLink]: pathname === "/order/options",
+            })}
+          >
+            Дополнительно
+          </NavLink>
+          <Arrow
+            className={cn({
+              [styles.orderNavigateArrowActive]: isActiveSummary,
+            })}
+          />
+          <NavLink
+            to="/order/summary"
+            className={cn(styles.orderNavigateItem, {
+              [styles.orderNavigateItemActive]: isActiveSummary,
+              [styles.currentPageLink]: pathname === "/order/summary",
+            })}
+          >
+            Итого
+          </NavLink>
+        </>
+      )}
+      {pathname === "/order/summary/success" && (
+        <div className={styles.orderNum}>Заказ номер RU58491823</div>
+      )}
     </div>
   );
 }

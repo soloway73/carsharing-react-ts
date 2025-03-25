@@ -1,11 +1,11 @@
-import styles from "./NextStepButton.module.css";
+import cn from "classnames";
+import { useMemo } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useLocation, useNavigate } from "react-router-dom";
 import { AppDispatch, RootState } from "../../store/store";
-import { useMemo } from "react";
-import { Button } from "../Button/Button";
-import cn from "classnames";
 import { totalActions } from "../../store/total.slice";
+import { Button } from "../Button/Button";
+import styles from "./NextStepButton.module.css";
 
 interface IButtonState {
   text: string;
@@ -64,7 +64,7 @@ export function NextStepButton() {
         buttonState = {
           text: "Отменить",
           isActive: true,
-          handler: () => navigate("order/summary/"),
+          handler: () => navigate("/order/summary/"),
         };
         break;
       }
@@ -74,7 +74,10 @@ export function NextStepButton() {
 
     return (
       <Button
-        className={cn({ [styles.disabled]: !buttonState.isActive })}
+        className={cn({
+          [styles.disabled]: !buttonState.isActive,
+          [styles.redBtn]: pathname === "/order/summary/success",
+        })}
         onClick={() => buttonState.handler()}
         disabled={!buttonState.isActive}
       >

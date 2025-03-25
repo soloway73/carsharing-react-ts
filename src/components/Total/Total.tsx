@@ -61,7 +61,9 @@ export function Total() {
       {totalSlice.model && (
         <TotalLine title={"Модель"} value={totalSlice.model} />
       )}
-      {(pathname === "/order/options" || pathname === "/order/summary") && (
+      {(pathname === "/order/options" ||
+        pathname === "/order/summary" ||
+        pathname === "/order/summary/success") && (
         <>
           <TotalLine title={"Цвет"} value={totalSlice.color} />
           <TotalLine title={"Тариф"} value={totalSlice.tariff} />
@@ -84,7 +86,9 @@ export function Total() {
           <span className={styles.bold}>Цена:</span> от {totalSlice.total} ₽
         </div>
       )}
-      {(pathname === "/order/options" || pathname === "/order/summary") && (
+      {(pathname === "/order/options" ||
+        pathname === "/order/summary" ||
+        pathname === "/order/summary/success") && (
         <div className={styles.totalPrice}>
           <span className={styles.bold}>Цена:</span> {totalScore} ₽
         </div>
