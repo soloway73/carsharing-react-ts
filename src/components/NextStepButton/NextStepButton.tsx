@@ -64,7 +64,7 @@ export function NextStepButton() {
         buttonState = {
           text: "Отменить",
           isActive: true,
-          handler: () => navigate("/order/summary/"),
+          handler: () => navigate("/order/summary"),
         };
         break;
       }
