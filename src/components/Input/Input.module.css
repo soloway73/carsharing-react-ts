@@ -78,3 +78,15 @@
 .clearButton:hover {
   color: var(--main-accent);
 }
+
+@media (max-width: 767px) {
+  .wrapper {
+    align-self: flex-start;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  }
+  .input {
+    width: calc(100% - 16px);
+  }
+}

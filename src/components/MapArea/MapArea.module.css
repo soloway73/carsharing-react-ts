@@ -17,3 +17,17 @@
 .balloonContent {
   min-width: 200px;
 }
+
+@media (max-width: 767px) {
+  .map {
+    width: 100%;
+    height: calc(100dvh - 360px);
+  }
+  .mapWrapper {
+    margin-top: 16px;
+  }
+  .balloonContent {
+    min-width: 50px;
+    bottom: 0;
+  }
+}

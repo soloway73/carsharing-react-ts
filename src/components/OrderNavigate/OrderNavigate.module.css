@@ -9,6 +9,14 @@
   gap: 16px;
 }
 
+.orderNavigate::-webkit-scrollbar {
+  display: none;
+}
+
+.orderNavigate svg {
+  flex-shrink: 0;
+}
+
 .orderNavigateItem {
   font-weight: 700;
   font-size: 14px;
@@ -38,4 +46,15 @@
   font-weight: 700;
   font-size: 14px;
   color: var(--black);
+}
+
+@media (max-width: 767px) {
+  .orderNavigate {
+    padding-left: 16px;
+    width: calc(100% - 16px);
+    overflow: auto;
+  }
+  .orderNavigateItem:last-child {
+    margin-right: 16px;
+  }
 }
