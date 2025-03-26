@@ -12,7 +12,12 @@ export function TotalModal() {
     <div className={styles.totalModal}>
       <Button onClick={() => setOpen(true)}>Детали заказа</Button>
 
-      <Sheet isOpen={isOpen} onClose={() => setOpen(false)}>
+      <Sheet
+        isOpen={isOpen}
+        onClose={() => setOpen(false)}
+        snapPoints={[-50, 0.75, 0.5, 100, 0]}
+        initialSnap={2}
+      >
         <Sheet.Container>
           <Sheet.Header />
           <Sheet.Content className={styles.content}>

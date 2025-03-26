@@ -53,6 +53,7 @@
     padding-left: 16px;
     width: calc(100% - 16px);
     overflow: auto;
+    height: 44px;
   }
   .orderNavigateItem:last-child {
     margin-right: 16px;

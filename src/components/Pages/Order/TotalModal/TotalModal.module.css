@@ -1,11 +1,12 @@
 .totalModal {
   display: flex;
-  gap: 3px;
+  gap: 8px;
   margin-bottom: 32px;
 }
 
 .content {
-  padding: 8px;
+  padding: 16px;
+  gap: 8px;
 }
 
 @media (min-width: 767px) {
