@@ -9,3 +9,12 @@
   align-items: self-end;
   width: 320px;
 }
+
+@media (max-width: 767px) {
+  .inputs {
+    width: 100%;
+  }
+  .location {
+    padding-top: 16px;
+  }
+}

@@ -1,0 +1,19 @@
+.title {
+  color: var(--black);
+  font-weight: 500;
+  font-size: 18px;
+}
+
+.totalPrice {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 16px;
+  color: #121212;
+  text-align: left;
+}
+.bold {
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 16px;
+  color: #121212;
+}

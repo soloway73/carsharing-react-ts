@@ -11,3 +11,11 @@
   flex-direction: row;
   justify-content: space-between;
 }
+
+@media (max-width: 767px) {
+  .orderContent {
+    padding: 0 16px;
+    flex-direction: column;
+    overflow: auto;
+  }
+}

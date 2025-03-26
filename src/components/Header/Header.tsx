@@ -1,6 +1,6 @@
 import cn from "classnames";
 import { useDispatch, useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { menuSlice } from "../../store/menu.slice";
 import { AppDispatch, RootState } from "../../store/store";
 import { Geolocation } from "../Geolocation/Geolocation";
@@ -13,6 +13,7 @@ export function Header() {
   const toggleMenu = () => dispatch(menuSlice.actions.toggle());
   const navigate = useNavigate();
   const toMain = () => navigate("/");
+  const { pathname } = useLocation();
 
   return (
     <header className={styles.header}>
@@ -24,7 +25,7 @@ export function Header() {
         ></div>
       </div>
       <Heading onClick={toMain} />
-      <Geolocation />
+      {pathname === "/" && <Geolocation />}
     </header>
   );
 }
