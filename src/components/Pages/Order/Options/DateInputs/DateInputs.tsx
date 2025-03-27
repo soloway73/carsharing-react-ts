@@ -6,8 +6,10 @@ export function DateInputs() {
   return (
     <div className={styles.dateInputs}>
       Дата аренды
-      <StartDateInput />
-      <EndDateInput />
+      <div className={styles.inputsWrapper}>
+        <StartDateInput />
+        <EndDateInput />
+      </div>
     </div>
   );
 }

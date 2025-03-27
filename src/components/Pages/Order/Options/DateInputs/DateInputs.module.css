@@ -28,3 +28,20 @@
 .dateInputsWrapper {
   align-self: flex-end;
 }
+
+.inputsWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+@media (max-width: 767px) {
+  .dateInputs {
+    margin: 16px 0;
+    max-width: 320px;
+  }
+  .inputsWrapper {
+    align-items: flex-end;
+    align-self: center;
+  }
+}
