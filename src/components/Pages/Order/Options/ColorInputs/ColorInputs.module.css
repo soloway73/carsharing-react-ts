@@ -9,3 +9,10 @@
   font-size: 14px;
   color: var(--black);
 }
+
+@media (max-width: 767px) {
+  .colorInputs {
+    display: flex;
+    flex-direction: column;
+  }
+}

@@ -1,3 +1,14 @@
 .options {
   padding: 32px;
 }
+
+@media (max-width: 767px) {
+  .options {
+    padding: 16px 0;
+    overflow-y: auto;
+    padding-bottom: 160px;
+    &::-webkit-scrollbar {
+      display: none;
+    }
+  }
+}

@@ -17,3 +17,6 @@
   line-height: 16px;
   color: #121212;
 }
+
+@media (max-width: 767px) {
+}
