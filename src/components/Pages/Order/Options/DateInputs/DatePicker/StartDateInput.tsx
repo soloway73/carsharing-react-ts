@@ -49,6 +49,7 @@ export function StartDateInput() {
         placeholderText="Ведите дату и время"
         className={styles.datePicker}
         clearButtonClassName={styles.clearButton}
+        popperClassName={styles.popper}
       />
     </div>
   );
