@@ -21,8 +21,9 @@ body {
   margin: 0;
   padding: 0;
   display: flex;
-  place-items: center;
-  min-height: 100vh;
+  /* place-items: center; */
+  min-height: 100dvh;
+  width: 100dvw;
 }
 a {
   text-decoration: none;

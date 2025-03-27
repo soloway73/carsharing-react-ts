@@ -37,3 +37,18 @@
   align-self: flex-end;
   margin-top: auto;
 }
+
+@media (max-width: 767px) {
+  .modelCard {
+    width: calc(100% - 36px);
+    height: auto;
+  }
+  .modelCard:hover {
+    width: calc(100% - 36px);
+    height: auto;
+  }
+  .modelCard.modelCardActive {
+    width: calc(100% - 36px);
+    height: auto;
+  }
+}

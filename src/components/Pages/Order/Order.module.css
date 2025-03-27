@@ -12,10 +12,13 @@
   justify-content: space-between;
 }
 
+.orderContent::-webkit-scrollbar {
+  display: none;
+}
+
 @media (max-width: 767px) {
   .orderContent {
     padding: 0 16px;
     flex-direction: column;
-    overflow: auto;
   }
 }
