@@ -35,3 +35,10 @@
 .endDateInput {
   align-self: flex-end;
 }
+
+@media (max-width: 767px) {
+  .startDateInput,
+  .endDateInput {
+    align-self: flex-end;
+  }
+}
