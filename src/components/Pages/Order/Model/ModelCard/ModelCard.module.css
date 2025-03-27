@@ -5,6 +5,7 @@
   display: flex;
   flex-direction: column;
   padding: 16px;
+  will-change: transform;
 }
 .modelCard:hover {
   border: 2px solid var(--gray);
@@ -55,19 +56,29 @@
 
 @media (min-width: 767px) and (max-width: 1023px) {
   .modelCard {
-    width: 100%;
+    width: auto;
     height: auto;
     box-sizing: border-box;
   }
   .modelCard:hover {
-    width: 100%;
+    width: auto;
     height: auto;
   }
   .modelCard.modelCardActive {
-    width: 100%;
+    width: auto;
     height: auto;
   }
 }
 
-@media (min-width: 1024px) {
+@media (min-width: 1024px) and (max-width: 1439px) {
+  .modelCard,
+  .modelCard:hover,
+  .modelCard.modelCardActive {
+    width: auto;
+    height: auto;
+    box-sizing: border-box;
+  }
+  .image {
+    width: auto;
+  }
 }

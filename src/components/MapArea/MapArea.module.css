@@ -42,3 +42,9 @@
     max-width: 650px;
   }
 }
+
+@media (min-width: 1024px) and (max-width: 1439px) {
+  .map {
+    max-width: 100%;
+  }
+}

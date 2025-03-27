@@ -35,3 +35,14 @@
     display: none;
   }
 }
+
+@media (min-width: 1024px) and (max-width: 1439px) {
+  .total {
+    width: 256px;
+
+    padding-bottom: 64px;
+  }
+  .total button:last-child {
+    width: 100%;
+  }
+}
