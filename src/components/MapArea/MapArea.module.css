@@ -31,3 +31,14 @@
     bottom: 0;
   }
 }
+@media (min-width: 768px) and (max-width: 1023px) {
+  .map {
+    width: 100%;
+    height: calc(100dvh - 380px);
+  }
+  .mapWrapper {
+    margin-top: 32px;
+    width: 100%;
+    max-width: 650px;
+  }
+}

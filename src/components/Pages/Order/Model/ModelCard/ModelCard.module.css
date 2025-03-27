@@ -52,3 +52,19 @@
     height: auto;
   }
 }
+
+@media (min-width: 767px) and (max-width: 1023px) {
+  .modelCard {
+    width: 100%;
+    height: auto;
+    box-sizing: border-box;
+  }
+  .modelCard:hover {
+    width: 100%;
+    height: auto;
+  }
+  .modelCard.modelCardActive {
+    width: 100%;
+    height: auto;
+  }
+}
