@@ -15,8 +15,8 @@ export function TotalModal() {
       <Sheet
         isOpen={isOpen}
         onClose={() => setOpen(false)}
-        snapPoints={[-50, 0.75, 0.5, 0.8, 100, 0]}
-        initialSnap={3}
+        snapPoints={[-50, 0.8, 0.75, 0.5, 100, 0]}
+        initialSnap={2}
       >
         <Sheet.Container>
           <Sheet.Header />

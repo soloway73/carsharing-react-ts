@@ -11,8 +11,8 @@ export function Order() {
       <div className={styles.orderContent}>
         <Outlet />
         <Total />
-        <TotalModal />
       </div>
+      <TotalModal />
     </div>
   );
 }
