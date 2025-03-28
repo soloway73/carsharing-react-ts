@@ -42,3 +42,11 @@
 .backBtn {
   background: linear-gradient(90deg, #493013 0%, #7b0c3b 100%);
 }
+
+@media (max-width: 767px) {
+  .popupButtons {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+}
