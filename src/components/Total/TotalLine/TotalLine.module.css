@@ -29,3 +29,9 @@
   color: #999999;
   max-width: 105px;
 }
+
+@media (min-width: 1024px) and (max-width: 1439px) {
+  .dashed {
+    min-width: 50px;
+  }
+}

@@ -48,3 +48,10 @@
     flex-direction: column;
   }
 }
+
+@media (min-width: 1024px) and (max-width: 1439px) {
+  .summary {
+    width: auto;
+    min-width: 576px;
+  }
+}

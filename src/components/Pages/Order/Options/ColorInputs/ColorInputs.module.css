@@ -13,6 +13,6 @@
 @media (max-width: 767px) {
   .colorInputs {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
   }
 }

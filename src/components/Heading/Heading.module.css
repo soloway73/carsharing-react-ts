@@ -9,3 +9,9 @@
 .headingActive {
   cursor: url("/pointer.svg"), pointer;
 }
+
+@media (max-width: 767px) {
+  .heading {
+    padding-top: 16px;
+  }
+}

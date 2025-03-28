@@ -10,11 +10,24 @@
   width: 320px;
 }
 
+@media (min-width: 768px) and (max-width: 1023px) {
+  .location {
+    width: 100%;
+  }
+}
+
 @media (max-width: 767px) {
   .inputs {
     width: 100%;
   }
   .location {
     padding-top: 16px;
+  }
+}
+
+@media (min-width: 1024px) and (max-width: 1439px) {
+  .location {
+    padding-right: 32px;
+    max-width: 512px;
   }
 }
