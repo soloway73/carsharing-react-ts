@@ -74,7 +74,7 @@ export function NextStepButton() {
 
     return (
       <Button
-        className={cn({
+        className={cn(styles.nextStepButton, {
           [styles.disabled]: !buttonState.isActive,
           [styles.redBtn]: pathname === "/order/summary/success",
         })}
