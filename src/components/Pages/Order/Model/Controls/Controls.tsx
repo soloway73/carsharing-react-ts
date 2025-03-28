@@ -34,6 +34,7 @@ export function Controls() {
           name="carBudget"
           id="eco"
           onChange={ecoCheckHandler}
+          checked={totalSlice.trim === "eco" ? true : false}
         />
         <label htmlFor="eco">Эконом</label>
       </div>
@@ -43,6 +44,7 @@ export function Controls() {
           name="carBudget"
           id="premium"
           onChange={premiumCheckHandler}
+          checked={totalSlice.trim === "premium" ? true : false}
         />
         <label htmlFor="premium">Премиум</label>
       </div>
