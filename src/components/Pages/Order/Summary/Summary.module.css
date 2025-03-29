@@ -46,6 +46,10 @@
   .summary {
     padding-top: 16px;
     flex-direction: column;
+    overflow: auto;
+  }
+  .summary::-webkit-scrollbar {
+    display: none;
   }
 }
 
