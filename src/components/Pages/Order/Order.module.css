@@ -22,7 +22,7 @@
   .orderContent {
     padding: 0 16px;
     flex-direction: column;
-    height: calc(100vh - 190px);
+    height: calc(100dvh - 190px);
   }
 }
 
