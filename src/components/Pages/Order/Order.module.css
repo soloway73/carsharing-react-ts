@@ -22,13 +22,14 @@
   .orderContent {
     padding: 0 16px;
     flex-direction: column;
+    height: calc(100vh - 190px);
   }
 }
 
 @media (min-width: 768px) and (max-width: 1023px) {
   .orderContent {
     flex-direction: column;
-    height: calc(100vh - 190px);
+    height: calc(100dvh - 190px);
     padding: 0 32px;
     overflow-y: auto;
     flex-grow: 1;

@@ -9,7 +9,7 @@
   .model {
     padding: 16px 0;
     overflow-y: auto;
-    padding-bottom: 160px;
+    padding-bottom: 32px;
     &::-webkit-scrollbar {
       display: none;
     }
