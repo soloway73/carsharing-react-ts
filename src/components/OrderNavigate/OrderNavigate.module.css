@@ -7,6 +7,7 @@
   padding-left: 64px;
   width: calc(100% - 64px);
   gap: 16px;
+  flex-shrink: 0;
 }
 
 .orderNavigate::-webkit-scrollbar {
