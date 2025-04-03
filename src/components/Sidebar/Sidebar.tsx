@@ -3,6 +3,7 @@ import styles from "./Sidebar.module.css";
 import { AppDispatch, RootState } from "../../store/store";
 import { menuSlice } from "../../store/menu.slice";
 import cn from "classnames";
+import { ChangeLanguageBtn } from "./ChangeLanguageBtn/ChangeLanguageBtn";
 
 export function Sidebar() {
   const dispatch = useDispatch<AppDispatch>();
@@ -18,7 +19,7 @@ export function Sidebar() {
           })}
         ></div>
       </div>
-      <button className={styles.changeLanguageButton}>Eng</button>
+      <ChangeLanguageBtn className={styles.changeLanguageButton} />
     </div>
   );
 }
