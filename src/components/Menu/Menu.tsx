@@ -9,6 +9,7 @@ import InstagramIcon from "../../assets/InstagramIcon.svg?react";
 import FacebookIcon from "../../assets/FacebookIcon.svg?react";
 import "../../i18n/i18n";
 import { useTranslation } from "react-i18next";
+import { ChangeLanguageBtn } from "../Sidebar/ChangeLanguageBtn/ChangeLanguageBtn";
 
 export function Menu() {
   const { t } = useTranslation();
@@ -45,7 +46,7 @@ export function Menu() {
             <InstagramIcon />
           </a>
         </div>
-        <div className={styles.changeLanguageButton}>Eng</div>
+        <ChangeLanguageBtn className={styles.changeLanguageButton} />
       </div>
       {pathname === "/" && <div className={styles.opacityBox}></div>}
     </div>
