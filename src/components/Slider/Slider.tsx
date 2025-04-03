@@ -2,28 +2,17 @@ import { useState } from "react";
 import { Button } from "../Button/Button";
 import styles from "./Slider.module.css";
 import cn from "classnames";
-
-const sliderValues = [
-  {
-    title: "Бесплатная парковка",
-    description: "Бесплатная парковка на территории компании",
-  },
-  {
-    title: "Страховка",
-    description: "Полная страховка страховка автомобиля",
-  },
-  {
-    title: "Бензин",
-    description: "Полный бак на любой заправке города за наш счёт",
-  },
-  {
-    title: "Обслуживание",
-    description: "Автомобиль проходит ежедневное ТО",
-  },
-];
+import "../../i18n/i18n";
+import { useTranslation } from "react-i18next";
+import { ITranslationSlide } from "../../i18n/translations/TranslationTypes";
 
 const Slider: React.FC = () => {
   const [sliderState, setSliderState] = useState(1);
+  const { t } = useTranslation();
+
+  const sliderValues: ITranslationSlide[] = t("mainPage.slider", {
+    returnObjects: true,
+  });
 
   const handleSlideButtonRightClick = () => {
     if (sliderState === sliderValues.length) {
@@ -64,7 +53,7 @@ const Slider: React.FC = () => {
             <div className={styles.description}>
               {sliderValues[sliderState - 1].description}
             </div>
-            <Button>Подробнее</Button>
+            <Button>{sliderValues[sliderState - 1].button}</Button>
           </div>
         </div>
       </div>

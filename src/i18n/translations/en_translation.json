@@ -1,0 +1,37 @@
+{
+  "menu": {
+    "parking": "Parking",
+    "fuel": "Fuel",
+    "insurance": "Insurance",
+    "service": "Service",
+    "changeLanguage": "Рус"
+  },
+  "mainPage": {
+    "title": "Carsharing",
+    "description": "Per-minute car rental in your city",
+    "button": "Order now",
+    "city": "Ulyanovsk",
+    "slider": [
+      {
+        "title": "Free parking",
+        "description": "Leave your car in paid city parking lots and permitted places, without violating traffic rules, as well as at airports.",
+        "button": "More"
+      },
+      {
+        "title": "Insurance",
+        "description": "Full car insurance",
+        "button": "More"
+      },
+      {
+        "title": "Fuel",
+        "description": "Full tank at any gas station in the city at our expense",
+        "button": "More"
+      },
+      {
+        "title": "Service",
+        "description": "The car is serviced once a day",
+        "button": "More"
+      }
+    ]
+  }
+}
