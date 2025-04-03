@@ -7,8 +7,11 @@ import { menuSlice } from "../../store/menu.slice";
 import TelegramIcon from "../../assets/TelegramIcon.svg?react";
 import InstagramIcon from "../../assets/InstagramIcon.svg?react";
 import FacebookIcon from "../../assets/FacebookIcon.svg?react";
+import "../../i18n/i18n";
+import { useTranslation } from "react-i18next";
 
 export function Menu() {
+  const { t } = useTranslation();
   const menuState = useSelector((s: RootState) => s.menu.isActive);
   const dispatch = useDispatch<AppDispatch>();
   const toggleMenu = () => dispatch(menuSlice.actions.toggle());
@@ -19,16 +22,16 @@ export function Menu() {
       <div className={styles.menuContent}>
         <div className={styles.menuLinks}>
           <NavLink to={"/"} onClick={toggleMenu} className={styles.menuItem}>
-            Парковка
+            {t("menu.parking")}
           </NavLink>
           <NavLink to={"/"} onClick={toggleMenu} className={styles.menuItem}>
-            Бензин
+            {t("menu.fuel")}
           </NavLink>
           <NavLink to={"/"} onClick={toggleMenu} className={styles.menuItem}>
-            Страхование
+            {t("menu.insurance")}
           </NavLink>
           <NavLink to={"/"} onClick={toggleMenu} className={styles.menuItem}>
-            Обслуживание
+            {t("menu.service")}
           </NavLink>
         </div>
         <div className={styles.socialLinks}>

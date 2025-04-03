@@ -5,10 +5,13 @@ import styles from "./MainPage.module.css";
 import { Footer } from "../../Footer/Footer";
 import { useEffect } from "react";
 import { totalActions } from "../../../store/total.slice";
+import "../../../i18n/i18n";
+import { useTranslation } from "react-i18next";
 
 export function MainPage() {
   const navigate = useNavigate();
   const toOrder = () => navigate("/order");
+  const { t } = useTranslation();
 
   useEffect(() => {
     totalActions.clearAll();
@@ -17,12 +20,12 @@ export function MainPage() {
   return (
     <>
       <div className={styles.content}>
-        <h2>Каршеринг</h2>
+        <h2>{t("mainPage.title")}</h2>
         <Heading />
-        <p className={styles.description}>
-          Поминутная аренда авто твоего города
-        </p>
-        <Button onClick={toOrder}>Забронировать</Button>
+        <p className={styles.description}>{t("mainPage.description")}</p>
+        <Button onClick={toOrder} className={styles.button}>
+          {t("mainPage.button")}
+        </Button>
       </div>
       <Footer />
     </>
